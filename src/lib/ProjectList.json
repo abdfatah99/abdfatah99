@@ -1,0 +1,23 @@
+[
+  {
+    "title": "Museum Betawi",
+    "image": "/projects/Museum Betawi.png",
+    "desc": "Museum Betawi Website, Resource for any information about Museum Betawi and data collection Management for the Official.",
+    "website": "/",
+    "sourceCode": "/"
+  },
+  {
+    "title": "Saika - Backend",
+    "image": "/projects/PKM.png",
+    "desc": "Informatics Student social app, this project is funded by UHAMKA as part of Program Kreativitas Mahasiswa.",
+    "website": "/",
+    "sourceCode": "/"
+  },
+  {
+    "title": "Perabot Land",
+    "image": "/projects/Perabot Land.png",
+    "desc": "Free Online Catalog for small furniture store",
+    "website": "",
+    "sourceCode": "/"
+  }
+]

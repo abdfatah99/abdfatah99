@@ -1,0 +1,25 @@
+[
+  {
+    "title": "Software Engineer",
+    "location": "PT. Nadila Karya Putra",
+    "date": "06/2022 - 6/2023",
+    "details": [
+      "Otomatisasi sistem resi perjalanan truk",
+      "Sistem Administrasi perjalanan truk",
+      "Sistem Keuangan Truk",
+      "Monitoring system untuk truk"
+    ]
+  },
+  {
+    "title": "Software Engineer Intern",
+    "location": "Museum Betawi, Jakarta",
+    "date": "10/2021 - 01/2022",
+    "details": [
+      "Digitalize 90% of Museum Collection Data Management Process",
+      "Design and Develop Data Flow System for Administration",
+      "Design and Develop API endpoints using Node.js for Backend. Using REST API for API Architecture.",
+      "Design and Develop Frontend using Next JS",
+      "Responsible for Lead and Implement Software Development Life Cycle using Scrum Methodology"
+    ]
+  }
+]
