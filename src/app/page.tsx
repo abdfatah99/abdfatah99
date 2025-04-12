@@ -1,5 +1,5 @@
-import Home from "@/ui/templates/home/home";
+import Home from "@/components/templates/home/Home";
 
 export default function HomePage() {
-  return <Home />
+  return <Home />;
 }

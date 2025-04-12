@@ -1,5 +1,5 @@
 import React from "react";
-import ExperienceCard from "@/ui/mollecule/card/ExperienceCard";
+import ExperienceCard from "@/components/molecule/card/ExperienceCard";
 import ExperienceList from "@/lib/ExperienceList.json";
 
 function Experience() {
@@ -9,14 +9,13 @@ function Experience() {
 
       {ExperienceList.map((data, index) => {
         return (
-          <>
             <ExperienceCard
+              key={index}
               title={data.title}
               place={data.location}
               date={data.date}
               details={data.details}
             />
-          </>
         );
       })}
     </div>

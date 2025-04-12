@@ -1,9 +1,9 @@
 import React from "react";
-import Navbar from "../../organism/Navbar";
-import Footer from "../../organism/Footer";
-import WelcomeText from "./WelcomeText";
-import Project from "./Project";
-import Experience from "./Experience";
+import Navbar from "@/components/organism/Navbar";
+import Footer from "@/components/organism/Footer";
+import WelcomeText from "./welcomeText";
+import Project from "./project";
+import Experience from "./experience";
 
 function Home() {
   return (
