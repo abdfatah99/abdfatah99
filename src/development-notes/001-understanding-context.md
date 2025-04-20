@@ -68,9 +68,9 @@ const psContentNavContext = createContext<IpsContentNavContext | undefined>(
 The `Content Navigation Context` only live under `personal-note` page (here,
 `personal-notes` is the root page of all notes page). Therefor,
 I create the Context Provider in the root page of `personal-note` which live in
-`app > personal-notes > page`.
+`app > personal-notes > page.tsx`.
 
-The Initial state also created in the root page, `app > personal-notes > page`.
+The Initial state also created in the root page, `app > personal-notes > page.tsx`.
 The initial state is:
 
 ```jsx

@@ -111,7 +111,7 @@ function PersonalNotes({ children }: any) {
 export default PersonalNotes;
 ```
 
-As you can see, the confiration for the navigation exist in the `template` file,
+As you can see, the configuration for the navigation exist in the `template` file,
 this is not pure for the development. All page configuration should live under
 `page.tsx` and the `template` only handle the UI. 
 

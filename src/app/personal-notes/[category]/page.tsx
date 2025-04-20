@@ -1,39 +1,53 @@
+import config from "@/lib/constants";
 import { Logger } from "@/lib/logging";
 import fs from "fs";
 import path from "path";
 
-const log = new Logger("src/app/personal-notes/[category]/page.tsx")
+const log = new Logger("src/app/personal-notes/[category]/page.tsx");
 
-export const dynamicParams = false
+export const dynamicParams = false;
 
-
+/**
+ * WARNING: Remember the key of object in the returned list-object should be the
+ * same as the directory name
+ *
+ * personal-notes/[category]/page.tsx
+ *
+ * key: category
+ *
+ * @returns
+ */
 export function generateStaticParams() {
-  const content = fs.readdirSync(
-    path.join('src', 'personal-notes', 'content')
-  ) 
+  const content = fs.readdirSync(path.join(config.personalNotesDir, "content"));
+  console.log("check content [category]/page.tsx:", content);
 
-  
+  const category = content.map((value: string, index: number) => {
+    return { category: value };
+  });
 
-  return [{ category: '1' }, { category: '2' }, { category: '3' }]
+  console.log("check category [category]/page.tsx:", category);
+
+  // return [{ category: '1' }, { category: '2' }, { category: '3' }]
+  return category;
 }
- 
+
 export default async function Page({
   params,
 }: {
-  params: Promise<{ category: string }>
+  params: Promise<{ category: string }>;
 }) {
-  const { category } = await params
-  
-  console.log("id: ", category) 
+  const { category } = await params;
 
-  log.logFlow("getting slug from dynamic page", { category })
+  console.log("id: ", category);
+
+  log.logFlow("getting slug from dynamic page", { category });
 
   return (
     <div>
-        category page: { category }
-        <p>category data from params, populated via generateStaticParams</p>
+      category page: {category}
+      <p>category data from params, populated via generateStaticParams</p>
     </div>
-  )
+  );
 }
 
 /**

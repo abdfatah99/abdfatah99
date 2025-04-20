@@ -1,3 +1,5 @@
+import path from 'path'
+
 const config = {
   navbarMenu: [
     {
@@ -16,6 +18,7 @@ const config = {
       link: "blog"
     },
   ],
+  personalNotesDir: path.join("src", "personal-notes")
 };
 
 export default config;
