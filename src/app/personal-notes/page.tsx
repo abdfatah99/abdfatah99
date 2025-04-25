@@ -45,18 +45,15 @@ function PersonalNotesPage() {
   /**
    * The function should know if the listed is directory or file
    * 1. if directory, it should new link and open new page
-   * 2. if it's file, it should directly display a content if it, example the 
-   *    directory contain markdown, then it show the file and if user click it, 
+   * 2. if it's file, it should directly display a content if it, example the
+   *    directory contain markdown, then it show the file and if user click it,
    *    it will display the content.
    */
-  const psDirCategory = fs.readdirSync(
-    path.join(config.personalNotesDir),
-  );
+  const psDirCategory = fs.readdirSync(path.join(config.personalNotesDir), {
+    withFileTypes: true,
+  });
 
-  
-
-
-  console.log("Personal Notes directory category:", psDirCategory)
+  console.log("Personal Notes directory category:", psDirCategory);
 
   return <PersonalNotes />;
 }
