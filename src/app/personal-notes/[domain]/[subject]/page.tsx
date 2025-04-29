@@ -1,4 +1,4 @@
-import fs from "fs";
+import fs, { Dirent } from "fs";
 import path from "path";
 import matter from "gray-matter"; // parses mardown frontmatter
 import { remark } from "remark";
@@ -11,28 +11,32 @@ import rehypePrettyCode from "rehype-pretty-code"
 
 // interface for page parameter
 interface Params {
-  category: string;
+  domain: string;
   slug: string;
 }
 
 export async function generateStaticParams() {
   // generate static paths for dynamic routing
   const categories = fs.readdirSync(
-    path.join("src", "personal-notes", "content"),
+    path.join("src", "personal-notes"),
   );
 
-  const paths = categories.flatMap((category) => {
+  const paths = categories.flatMap((domain) => {
+    // check if dirent is directory
+      // recursively to create the domain and slug
+    // check if dirent is a file
+
     const files = fs.readdirSync(
-      path.join("src", "personal-notes", "content", category),
+      path.join("src", "personal-notes", domain),
     );
     return files.map((file) => ({
-      category,
+      domain,
       slug: file.replace(/\.md$/, ""),
     }));
   });
 
-  return paths.map(({ category, slug }) => ({
-    params: { category, slug },
+  return paths.map(({ domain, slug }) => ({
+    params: { domain, slug },
   }));
 }
 
@@ -41,12 +45,11 @@ export default async function PersonalNotesPage({
 }: {
   params: Params;
 }) {
-  const { category, slug } = params;
+  const { domain, slug } = params;
   const markdownPath = path.join(
     "src",
     "personal-notes",
-    "content",
-    category,
+    domain,
     `${slug}.md`,
   );
   const fileContent = fs.readFileSync(markdownPath, "utf-8");

@@ -5,10 +5,16 @@ import ContentNavigation from "@/components/molecule/notes-content-navigation";
 import Navbar from "@/components/organism/Navbar";
 import React, { useContext } from "react";
 import PSNotesMaterialCard from "@/components/molecule/card/PersonalNotesMaterialCard";
+import { Dirent } from "fs";
 
 // here where you have to update the personal notes context
 
-function PersonalNotes({ children }: any) {
+interface ITPSHomePage {
+  domain: Dirent[];
+}
+
+// TemplatePersonalNotesHomePage
+function TPSHomePage(props: ITPSHomePage) {
   // const navigationValue = useContext(psContentNavContext);
 
   // if (!navigationValue) {
@@ -25,6 +31,10 @@ function PersonalNotes({ children }: any) {
   //   setNav((prevNav) => prevNav.slice(0, -1));
   // };
 
+  const domain = props.domain.map((domain_item) => {
+    return <li key={domain_item.name}>{domain_item.name}</li>;
+  });
+
   return (
     <>
       {/* Content Navigation
@@ -36,21 +46,35 @@ function PersonalNotes({ children }: any) {
       <div className="container">
         <p className="my-2 text-xs text-slate-500">Fatah Personal Notes</p>
 
-        <p className="text-2xl font-semibold">Database</p>
+        {/* <p className="text-2xl font-semibold">Database</p> */}
+        {/* <p>Domain list</p> */}
+        {/* <ol>{domain}</ol> */}
 
-        <div className="mt-3">
-          <PSNotesMaterialCard
+        <div className="mt-3 bg-yellow-50 grid grid-cols-2 gap-4">
+          {props.domain.map((e, index) => {
+            return (
+              <PSNotesMaterialCard
+                key={index}
+                image="/personal-notes/sql-server.png"
+                title={e.name}
+                desc="lorem ipsum"
+                goto={`/personal-notes/${e.name}`}
+                link={`/personal-notes/${e.name}`}
+              />
+            );
+          })}
+          {/* <PSNotesMaterialCard
             image="/personal-notes/sql-server.png"
             title="SQL Server"
             desc="Enterprise Database Solution by Microsoft"
             goto="/personal-notes/database"
             link="/personal-notes/database"
             onClick={() => console.log("test")}
-          />
+          /> */}
         </div>
       </div>
     </>
   );
 }
 
-export default PersonalNotes;
+export default TPSHomePage;

@@ -10,11 +10,15 @@ import fs from "fs";
 // The most up parent of the personal-notes is the `layout`, then you should
 // place the Context.provider under in the `layout.tsx`.
 
-import PersonalNotes from "@/components/templates/personal-notes/PersonalNotes";
+import TPSHomePage from "@/components/templates/personal-notes/TPSHomePage";
 import path from "path";
-import config from "@/lib/constants";
+import constant from "@/lib/constants";
+import { Logger } from "@/lib/logging";
+import { Dirent } from 'fs'
 // import { psContentNavContext } from "@/contexts/personal-notes/personal-notes-context";
 // import { useContext } from "react";
+
+const log = new Logger("src/app/personal-notes/page.tsx");
 
 function PersonalNotesPage() {
   // const navigationValue = useContext(psContentNavContext);
@@ -49,12 +53,15 @@ function PersonalNotesPage() {
    *    directory contain markdown, then it show the file and if user click it,
    *    it will display the content.
    */
-  const psDirCategory = fs.readdirSync(path.join(config.personalNotesDir), {
+  const psDomain: Dirent[] = fs.readdirSync(path.join(constant.psDomain), {
     withFileTypes: true,
   });
 
-  console.log("Personal Notes directory category:", psDirCategory);
+  // log.logFlow(
+  //   "Get all content of personal-notes directory (as domain list):",
+  //   psDomain,
+  // );
 
-  return <PersonalNotes />;
+  return <TPSHomePage domain={psDomain} />;
 }
 export default PersonalNotesPage;

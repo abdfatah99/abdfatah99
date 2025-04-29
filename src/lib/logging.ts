@@ -1,5 +1,7 @@
 import chalk from "chalk";
 import path from "path";
+import { Dirent } from "fs";
+import util from "util";
 
 export class Logger {
   private sourceFile: string;
@@ -13,12 +15,12 @@ export class Logger {
     this.sourceFile = sourceFile;
   }
 
-  // [1] 
-  private clickableSource(): string{
+  // [1]
+  private clickableSource(): string {
     // Encode spaces and other special characters in the file path
     // const encodedPath = this.sourceFile.replace(/ /g, "%20");
     const encodedPath = this.sourceFile;
-    return `./${encodedPath}`
+    return `./${encodedPath}`;
   }
 
   // logContext(context: string, data: Record<string, unknown> = {}){
@@ -41,13 +43,16 @@ export class Logger {
    * @param step {string}
    * @param data {Record<string, unknown>}
    */
-  logFlow(step: string, data: Record<string, unknown>) {
+  // logFlow(step: string, data: Record<string, unknown> | string[] | Dirent[]) {
+  logFlow(step: string, data: unknown) {
+    console.log(typeof data);
     console.log(
       chalk.blue(
         [
           `[FLOW] Source: ${this.clickableSource()}`,
           `[FLOW] Step: ${step}`,
-          `[FLOW] Data: ${JSON.stringify(data)}`,
+          // `[FLOW] Data: ${JSON.stringify(data, null, 2)}`,
+          `[FLOW] Data: ${util.inspect(data, { depth: null, colors: false })}`,
           `[FLOW] Timestamp: ${new Date().toISOString()}`,
         ].join("\n"),
       ),
