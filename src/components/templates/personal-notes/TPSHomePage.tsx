@@ -6,11 +6,15 @@ import Navbar from "@/components/organism/Navbar";
 import React, { useContext } from "react";
 import PSNotesMaterialCard from "@/components/molecule/card/PersonalNotesMaterialCard";
 import { Dirent } from "fs";
+import PSDirectory from "@/lib/personal-notes-directory";
+import { Logger } from "@/lib/logging";
+
+const log = new Logger("src/component/templates/personal-notes/TPSHomePage.tsx")
 
 // here where you have to update the personal notes context
 
 interface ITPSHomePage {
-  domain: Dirent[];
+  domain: PSDirectory;
 }
 
 // TemplatePersonalNotesHomePage
@@ -31,9 +35,11 @@ function TPSHomePage(props: ITPSHomePage) {
   //   setNav((prevNav) => prevNav.slice(0, -1));
   // };
 
-  const domain = props.domain.map((domain_item) => {
-    return <li key={domain_item.name}>{domain_item.name}</li>;
-  });
+  // const domain = props.domain.map((domain_item) => {
+  //   return <li key={domain_item.name}>{domain_item.name}</li>;
+  // });
+
+  log.logFlow("get data from page.tsx into page template", props.domain)
 
   return (
     <>
@@ -46,12 +52,9 @@ function TPSHomePage(props: ITPSHomePage) {
       <div className="container">
         <p className="my-2 text-xs text-slate-500">Fatah Personal Notes</p>
 
-        {/* <p className="text-2xl font-semibold">Database</p> */}
-        {/* <p>Domain list</p> */}
-        {/* <ol>{domain}</ol> */}
-
-        <div className="mt-3 bg-yellow-50 grid grid-cols-2 gap-4">
-          {props.domain.map((e, index) => {
+        <div className="mt-3 grid grid-cols-2 gap-4 bg-yellow-50">
+          {props.domain.getDescription()}
+          {/* {props.domain.map((e, index) => {
             return (
               <PSNotesMaterialCard
                 key={index}
@@ -62,15 +65,7 @@ function TPSHomePage(props: ITPSHomePage) {
                 link={`/personal-notes/${e.name}`}
               />
             );
-          })}
-          {/* <PSNotesMaterialCard
-            image="/personal-notes/sql-server.png"
-            title="SQL Server"
-            desc="Enterprise Database Solution by Microsoft"
-            goto="/personal-notes/database"
-            link="/personal-notes/database"
-            onClick={() => console.log("test")}
-          /> */}
+          })} */}
         </div>
       </div>
     </>

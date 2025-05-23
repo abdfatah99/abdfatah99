@@ -15,6 +15,7 @@ import path from "path";
 import constant from "@/lib/constants";
 import { Logger } from "@/lib/logging";
 import { Dirent } from 'fs'
+import PSDirectory from "@/lib/personal-notes-directory";
 // import { psContentNavContext } from "@/contexts/personal-notes/personal-notes-context";
 // import { useContext } from "react";
 
@@ -53,15 +54,28 @@ function PersonalNotesPage() {
    *    directory contain markdown, then it show the file and if user click it,
    *    it will display the content.
    */
-  const psDomain: Dirent[] = fs.readdirSync(path.join(constant.psDomain), {
-    withFileTypes: true,
-  });
+  // const psDomain: Dirent[] = fs.readdirSync(path.join(constant.psDomain), {
+  //   withFileTypes: true,
+  // });
+
+  // console.log(constant.psDomain)
+
+  // const personalNotes = new PSDirectory("src/personal-notes")
+  const personalNotes = new PSDirectory(constant.psDomain)
+  log.logFlow("Inspect Class Element", personalNotes)
+
+
+  
+
+  // 1. get url from this route
+  // 2. pass the url to the lib > personal-notes-directory.ts
+  // 3. get return value 
 
   // log.logFlow(
   //   "Get all content of personal-notes directory (as domain list):",
   //   psDomain,
   // );
 
-  return <TPSHomePage domain={psDomain} />;
+  return <TPSHomePage domain={personalNotes} />;
 }
 export default PersonalNotesPage;

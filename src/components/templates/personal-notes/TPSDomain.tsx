@@ -12,7 +12,7 @@ interface ITPSDomain {
  *
  * @returns jsx
  */
-function PSDomain(props: ITPSDomain) {
+function TPSDomain(props: ITPSDomain) {
   return (
     <div>
       Personal Notes Domain
@@ -26,4 +26,4 @@ function PSDomain(props: ITPSDomain) {
   )
 }
 
-export default PSDomain;
+export default TPSDomain;
