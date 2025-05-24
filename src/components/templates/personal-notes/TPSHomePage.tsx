@@ -53,19 +53,18 @@ function TPSHomePage(props: ITPSHomePage) {
         <p className="my-2 text-xs text-slate-500">Fatah Personal Notes</p>
 
         <div className="mt-3 grid grid-cols-2 gap-4 bg-yellow-50">
-          {props.domain.getDescription()}
-          {/* {props.domain.map((e, index) => {
+          { props.domain.getChildrenDirectory().map((dir, index) => {
             return (
-              <PSNotesMaterialCard
+              <PSNotesMaterialCard 
                 key={index}
                 image="/personal-notes/sql-server.png"
-                title={e.name}
-                desc="lorem ipsum"
-                goto={`/personal-notes/${e.name}`}
-                link={`/personal-notes/${e.name}`}
+                title={dir.getName()}
+                desc={dir.getDescription()}
+                goto={dir.getLink()}
+                link={dir.getLink()}
               />
-            );
-          })} */}
+            )
+          }) }
         </div>
       </div>
     </>

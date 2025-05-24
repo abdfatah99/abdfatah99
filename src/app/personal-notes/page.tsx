@@ -62,12 +62,12 @@ function PersonalNotesPage() {
 
   // const personalNotes = new PSDirectory("src/personal-notes")
   const personalNotes = new PSDirectory(constant.psDomain)
-  log.logFlow("Inspect Class Element", personalNotes)
+  // log.logFlow("Inspect Class Element", personalNotes)
 
-  console.log("=====================")
+  // console.log("=====================")
 
   // log.logFlow("Check directory Content: ", personalNotes.Directory)
-  log.logFlow("List of directory", personalNotes.getChildrenDirectory())
+  // log.logFlow("List of directory", personalNotes.getChildrenDirectory())
 
 
   // 1. get url from this route

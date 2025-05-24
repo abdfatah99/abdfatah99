@@ -29,6 +29,7 @@ interface IPSNotesMaterial {
  * @returns
  */
 function PSNotesMaterialCard(props: IPSNotesMaterial) {
+  console.log("PS notes material card, check title: ", props.title)
   return (
     <div className="flex h-[335px] w-[156px] flex-col rounded-xl p-4 shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px]">
       <Image

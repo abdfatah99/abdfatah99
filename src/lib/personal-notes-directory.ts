@@ -122,7 +122,9 @@ export class PSDirectory {
   /**
    * Link to the page that represent content of this directory/file
    */
-  getLink() {}
+  getLink() {
+    return "#"
+  }
 
   // Image representative for the directory/file in the card
   getImage() {}
