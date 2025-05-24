@@ -15,7 +15,7 @@ import path from "path";
 import constant from "@/lib/constants";
 import { Logger } from "@/lib/logging";
 import { Dirent } from 'fs'
-import PSDirectory from "@/lib/personal-notes-directory";
+import { PSDirectory } from "@/lib/personal-notes-directory";
 // import { psContentNavContext } from "@/contexts/personal-notes/personal-notes-context";
 // import { useContext } from "react";
 
@@ -64,8 +64,11 @@ function PersonalNotesPage() {
   const personalNotes = new PSDirectory(constant.psDomain)
   log.logFlow("Inspect Class Element", personalNotes)
 
+  console.log("=====================")
 
-  
+  // log.logFlow("Check directory Content: ", personalNotes.Directory)
+  log.logFlow("List of directory", personalNotes.getChildrenDirectory())
+
 
   // 1. get url from this route
   // 2. pass the url to the lib > personal-notes-directory.ts

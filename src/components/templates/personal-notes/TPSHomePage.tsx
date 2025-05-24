@@ -6,7 +6,7 @@ import Navbar from "@/components/organism/Navbar";
 import React, { useContext } from "react";
 import PSNotesMaterialCard from "@/components/molecule/card/PersonalNotesMaterialCard";
 import { Dirent } from "fs";
-import PSDirectory from "@/lib/personal-notes-directory";
+import { PSDirectory } from "@/lib/personal-notes-directory";
 import { Logger } from "@/lib/logging";
 
 const log = new Logger("src/component/templates/personal-notes/TPSHomePage.tsx")
@@ -39,7 +39,7 @@ function TPSHomePage(props: ITPSHomePage) {
   //   return <li key={domain_item.name}>{domain_item.name}</li>;
   // });
 
-  log.logFlow("get data from page.tsx into page template", props.domain)
+  // log.logFlow("get data from page.tsx into page template", props.domain)
 
   return (
     <>
