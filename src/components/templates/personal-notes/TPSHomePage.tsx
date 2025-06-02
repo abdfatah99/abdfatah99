@@ -8,17 +8,20 @@ import PSNotesMaterialCard from "@/components/molecule/card/PersonalNotesMateria
 import { Dirent } from "fs";
 import { PSDirectory } from "@/lib/personal-notes-directory";
 import { Logger } from "@/lib/logging";
+import MaterialCardGrid from "@/components/organism/MaterialCardGrid";
 
-const log = new Logger("src/component/templates/personal-notes/TPSHomePage.tsx")
+const log = new Logger(
+  "src/component/templates/personal-notes/TPSHomePage.tsx",
+);
 
 // here where you have to update the personal notes context
 
 interface ITPSHomePage {
-  domain: PSDirectory;
+  domainMaterial: PSDirectory;
 }
 
 // TemplatePersonalNotesHomePage
-function TPSHomePage(props: ITPSHomePage) {
+function TPSHomePage({ domainMaterial }: ITPSHomePage) {
   // const navigationValue = useContext(psContentNavContext);
 
   // if (!navigationValue) {
@@ -41,6 +44,8 @@ function TPSHomePage(props: ITPSHomePage) {
 
   // log.logFlow("get data from page.tsx into page template", props.domain)
 
+  const listOfDomainMaterial = domainMaterial.getChildrenDirectory();
+
   return (
     <>
       {/* Content Navigation
@@ -52,19 +57,8 @@ function TPSHomePage(props: ITPSHomePage) {
       <div className="container">
         <p className="my-2 text-xs text-slate-500">Fatah Personal Notes</p>
 
-        <div className="mt-3 grid grid-cols-2 gap-4 bg-yellow-50">
-          { props.domain.getChildrenDirectory().map((dir, index) => {
-            return (
-              <PSNotesMaterialCard 
-                key={index}
-                image="/personal-notes/sql-server.png"
-                title={dir.getName()}
-                desc={dir.getDescription()}
-                goto={dir.getLink()}
-                link={dir.getLink()}
-              />
-            )
-          }) }
+        <div>
+          <MaterialCardGrid directories={listOfDomainMaterial} />
         </div>
       </div>
     </>

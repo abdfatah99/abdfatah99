@@ -18,7 +18,7 @@ const config = {
       link: "blog",
     },
   ],
-  psDomain: path.join("src", "personal-notes"),
+  psHomePath: path.join("src", "personal-notes"),
 };
 
 export default config;

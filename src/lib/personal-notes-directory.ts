@@ -49,12 +49,13 @@ import path from "path";
 import frontMatter from "front-matter";
 
 export class PSDirectory {
-//   #ListOfDirectory: PSDirectory[] = [];
+  //   #ListOfDirectory: PSDirectory[] = [];
   // readonly Children: Dirent[];
-  #children: PSDirectory[] | null = null; 
+  #children: PSDirectory[] | null = null;
   readonly fullPath: string;
   readonly readmepath: string;
   readonly name: string;
+  readonly urlPath: string;
 
   private metadata: {
     title?: string;
@@ -71,6 +72,13 @@ export class PSDirectory {
     this.fullPath = directoryPath;
     this.readmepath = path.join(directoryPath, "README.md");
     this.name = path.basename(directoryPath);
+    this.urlPath =
+      "/" +
+      directoryPath
+        .split("\\") // `\\` used because of window. window -> \; posix -> /
+        .slice(1) // remove 'src'
+        .map((value) => value.replace(/[^a-z0-9_]+/gi, "-").toLocaleLowerCase())
+        .join("/");
 
     // if README.md is exist in the directory, extract the metadata of README.md
     // in the directory
@@ -90,7 +98,6 @@ export class PSDirectory {
     // const Children = fs.readdirSync(directoryPath, { withFileTypes: true });
     // // this.Directory = new PSDirectory(directoryPath)
     // console.log("Actual Dirent Class", Children)
-
 
     // for (let dir of Children) {
     //   if (dir.isDirectory() && dir.path) {
@@ -123,33 +130,33 @@ export class PSDirectory {
    * Link to the page that represent content of this directory/file
    */
   getLink() {
-    return "#"
+    return this.urlPath;
   }
 
   // Image representative for the directory/file in the card
   getImage() {}
 
   /**
-   * Load children directory 
-   * 
+   * Load children directory
+   *
    * Strategy:
    * Lazy load directory when called the function
-   * 
-   * @returns 
+   *
+   * @returns
    */
   getChildrenDirectory() {
     // 1. if the class already has a children, return its children
-    // 2. read all directory content -> Dirent[] class, select only if it's a 
+    // 2. read all directory content -> Dirent[] class, select only if it's a
     //    directory
-    
-    if (this.#children) return this.#children
 
-    const dirents = fs.readdirSync(this.fullPath, { withFileTypes: true })
+    if (this.#children) return this.#children;
+
+    const dirents = fs.readdirSync(this.fullPath, { withFileTypes: true });
     this.#children = dirents
-                     .filter((dir) => dir.isDirectory())
-                     .map(dir => new PSDirectory(path.join(this.fullPath, dir.name)))
+      .filter((dir) => dir.isDirectory())
+      .map((dir) => new PSDirectory(path.join(this.fullPath, dir.name)));
 
-    return this.#children
+    return this.#children;
   }
 }
 

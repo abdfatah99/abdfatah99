@@ -14,7 +14,7 @@ import TPSHomePage from "@/components/templates/personal-notes/TPSHomePage";
 import path from "path";
 import constant from "@/lib/constants";
 import { Logger } from "@/lib/logging";
-import { Dirent } from 'fs'
+import { Dirent } from "fs";
 import { PSDirectory } from "@/lib/personal-notes-directory";
 // import { psContentNavContext } from "@/contexts/personal-notes/personal-notes-context";
 // import { useContext } from "react";
@@ -61,7 +61,7 @@ function PersonalNotesPage() {
   // console.log(constant.psDomain)
 
   // const personalNotes = new PSDirectory("src/personal-notes")
-  const personalNotes = new PSDirectory(constant.psDomain)
+    const personalNotes = new PSDirectory(constant.psHomePath);
   // log.logFlow("Inspect Class Element", personalNotes)
 
   // console.log("=====================")
@@ -69,16 +69,15 @@ function PersonalNotesPage() {
   // log.logFlow("Check directory Content: ", personalNotes.Directory)
   // log.logFlow("List of directory", personalNotes.getChildrenDirectory())
 
-
   // 1. get url from this route
   // 2. pass the url to the lib > personal-notes-directory.ts
-  // 3. get return value 
+  // 3. get return value
 
   // log.logFlow(
   //   "Get all content of personal-notes directory (as domain list):",
   //   psDomain,
   // );
 
-  return <TPSHomePage domain={personalNotes} />;
+  return <TPSHomePage domainMaterial={personalNotes} />;
 }
 export default PersonalNotesPage;

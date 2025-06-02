@@ -8,12 +8,16 @@ import rehypeStringify from "rehype-stringify";
 
 import rehypePrism from "rehype-prism";
 import rehypePrettyCode from "rehype-pretty-code"
+import { Logger } from "@/lib/logging";
+
+const log = new Logger("src/app/personal-notes/[domain]/[subject]/page.tsx")
 
 // interface for page parameter
 interface Params {
   domain: string;
   slug: string;
 }
+
 
 export async function generateStaticParams() {
   // generate static paths for dynamic routing
@@ -27,8 +31,11 @@ export async function generateStaticParams() {
     // check if dirent is a file
 
     const files = fs.readdirSync(
-      path.join("src", "personal-notes", domain),
+      path.join("src", "personal-notes"),
     );
+
+    console.log(files)
+
     return files.map((file) => ({
       domain,
       slug: file.replace(/\.md$/, ""),
@@ -46,31 +53,37 @@ export default async function PersonalNotesPage({
   params: Params;
 }) {
   const { domain, slug } = params;
+
+  console.log(domain, slug)
+
   const markdownPath = path.join(
     "src",
     "personal-notes",
     domain,
     `${slug}.md`,
   );
-  const fileContent = fs.readFileSync(markdownPath, "utf-8");
+
+  log.logFlow("Get param as for the domain and readme.md file", markdownPath)
+
+  // const fileContent = fs.readFileSync(markdownPath, "utf-8");
   // extract markdown frontmatter
-  const { content, data } = matter(fileContent);
+  // const { content, data } = matter(fileContent);
 
   // process markdown content usign remark-rehype pipeline
-  const processedContent = await remark()
-    .use(remarkParse)
-    .use(remarkRehype)
+  // const processedContent = await remark()
+  //   .use(remarkParse)
+  //   .use(remarkRehype)
     // .use(rehypePrism)
-    .use(rehypePrettyCode)
-    .use(rehypeStringify)
-    .process(content);
+  //   .use(rehypePrettyCode)
+  //   .use(rehypeStringify)
+  //   .process(content);
 
-  const htmlContent = processedContent.toString();
+  // const htmlContent = processedContent.toString();
 
   return (
     <div className="prose prose-lg mx-auto my-8">
-      <h1 className="font-bold">{data.title}</h1>
-      <div dangerouslySetInnerHTML={{ __html: htmlContent }}></div>
+      {/* <h1 className="font-bold">{data.title}</h1> */}
+      {/* <div dangerouslySetInnerHTML={{ __html: htmlContent }}></div> */}
     </div>
   );
 }

@@ -45,7 +45,7 @@ export class Logger {
    */
   // logFlow(step: string, data: Record<string, unknown> | string[] | Dirent[]) {
   logFlow(step: string, data: unknown) {
-    console.log(typeof data);
+    // console.log("", typeof data);
     console.log(
       chalk.blue(
         [
