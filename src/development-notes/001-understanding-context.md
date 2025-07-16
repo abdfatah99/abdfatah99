@@ -59,6 +59,7 @@ const psContentNavContext = createContext<IpsContentNavContext | undefined>(
   undefined,
 );
 ```
+
 - `ps`: Personal Notes
 - The default value for the context is `undefined`.
 - The structure of the context is `{ nav: string[], setNav: dispatch() }`

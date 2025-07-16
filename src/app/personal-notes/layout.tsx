@@ -1,4 +1,4 @@
-import Navbar from "@/components/organism/Navbar";
+import Navbar from "@/src/components/organism/Navbar";
 
 export default async function PersonalNotesLayout({
   children,

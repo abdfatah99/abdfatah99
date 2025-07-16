@@ -10,12 +10,12 @@ import fs from "fs";
 // The most up parent of the personal-notes is the `layout`, then you should
 // place the Context.provider under in the `layout.tsx`.
 
-import TPSHomePage from "@/components/templates/personal-notes/TPSHomePage";
+import TPSHomePage from "@/src/components/templates/personal-notes/TPSHome";
 import path from "path";
-import constant from "@/lib/constants";
-import { Logger } from "@/lib/logging";
+import config from "@/src/utils/config";
+import { Logger } from "@/src/lib/logging";
 import { Dirent } from "fs";
-import { PSDirectory } from "@/lib/personal-notes-directory";
+import { PSDirectory } from "@/src/utils/PSNode";
 // import { psContentNavContext } from "@/contexts/personal-notes/personal-notes-context";
 // import { useContext } from "react";
 
@@ -61,10 +61,8 @@ function PersonalNotesPage() {
   // console.log(constant.psDomain)
 
   // const personalNotes = new PSDirectory("src/personal-notes")
-    const personalNotes = new PSDirectory(constant.psHomePath);
+  const personalNotes = new PSDirectory(config.psBase);
   // log.logFlow("Inspect Class Element", personalNotes)
-
-  // console.log("=====================")
 
   // log.logFlow("Check directory Content: ", personalNotes.Directory)
   // log.logFlow("List of directory", personalNotes.getChildrenDirectory())

@@ -14,8 +14,9 @@ This is list
 function PrintName() {
   return <div>My name is abdul fatah</div>;
 }
-```
 
 export default ({ children }) => (
   <article className="prose bg-yellow-200">{children}</article>
 );
+
+```

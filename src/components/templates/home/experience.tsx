@@ -1,6 +1,6 @@
 import React from "react";
-import ExperienceCard from "@/components/molecule/card/ExperienceCard";
-import ExperienceList from "@/lib/ExperienceList.json";
+import ExperienceCard from "@/src/components/molecule/card/ExperienceCard";
+import ExperienceList from "@/src/lib/ExperienceList.json";
 
 function Experience() {
   return (

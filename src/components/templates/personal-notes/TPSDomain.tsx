@@ -1,7 +1,7 @@
 //
 
-import PSNotesMaterialCard from "@/components/molecule/card/PersonalNotesMaterialCard";
-import { PSDirectory } from "@/lib/personal-notes-directory";
+import PSNotesSubjectCard from "@/src/components/molecule/card/PersonalNotesSubjectCard";
+import { PSDirectory } from "@/src/utils/PSNode";
 
 interface ITPSDomain {
   domain: PSDirectory;
@@ -13,38 +13,48 @@ interface ITPSDomain {
  *   ['database','programming language', readme.md]
  *
  *
+ * TODO
+ * - Template for directory
+ * - Template for file (displaying material)
+ *
  * @returns jsx
  */
-function TPSDomain(props: ITPSDomain) {
+export function PSNotePageTemplate(props: ITPSDomain) {
+  const description = props.domain.getName();
+  const children = props.domain.getChildrenDirectory();
+  const notes = props.domain.getNotesList();
+
   return (
     <div>
-      {/* Personal Notes Domain */}
-      {/* list of material: */}
-      {/* <ol className="list-disc">
-        {props.domain.map(element => {
-          return <li key={element}>{element}</li>
-        })}
-      </ol> */}
-
-      { props.domain.getDescription()}
+      <p className="my-4 text-gray-700">{description}</p>
 
       <div className="mt-3 grid grid-cols-2 gap-4 ">
-      { props.domain.getChildrenDirectory().map((dir, index) => {
-        return (
-          <PSNotesMaterialCard 
-            key={index}
-            image="/personal-notes/sql-server.png"
-            title={dir.getName()}
-            desc={dir.getDescription()}
-            materialLink={dir.getLink()}
-          />
-        )
-      })}
- 
-      </div>
+        {children.map((dir, index) => {
+          return (
+            <PSNotesSubjectCard
+              key={index}
+              image="/personal-notes/sql-server.png"
+              title={dir.getName()}
+              desc={dir.getDescription()}
+              materialLink={dir.getURLPath()}
+            />
+          );
+        })}
 
-   </div>
-  )
+        {notes.map((material, index) => {
+          return (
+            <PSNotesSubjectCard
+              key={index}
+              image="/personal-notes/sql-server.png"
+              title={material.getName()}
+              desc={material.getDescription()}
+              materialLink={material.getURLPath()}
+            />
+          );
+        })}
+      </div>
+    </div>
+  );
 }
 
-export default TPSDomain;
+export function PSNotesMaterial() {}

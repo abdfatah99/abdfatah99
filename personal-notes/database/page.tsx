@@ -1,9 +1,9 @@
 "use client";
 import React, { useContext } from "react";
-import IntroPostgree from "./content/001-intro-to-postgre.mdx";
-import Navbar from "@/components/organism/Navbar";
-import { psContentNavContext } from "@/contexts/personal-notes/personal-notes-context";
-import ContentNavigation from "@/components/molecule/notes-content-navigation";
+// import IntroPostgree from "./content/001-intro-to-postgre.mdx";
+import Navbar from "@/src/components/organism/Navbar";
+import { psContentNavContext } from "@/src/contexts/personal-notes/personal-notes-context";
+import ContentNavigation from "@/src/components/molecule/notes-content-navigation";
 
 function DatabasePage() {
   const navigationValue = useContext(psContentNavContext);
@@ -18,7 +18,7 @@ function DatabasePage() {
       <div className="container">
         <ContentNavigation nav={nav}></ContentNavigation>
         database page (Home)
-        <IntroPostgree />
+        {/* <IntroPostgree /> */}
       </div>
     </>
   );

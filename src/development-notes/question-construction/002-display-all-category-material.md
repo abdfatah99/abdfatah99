@@ -28,7 +28,6 @@ export default function PersonalNotesLayout({
   // const [nav, setNav] = useState<string[]>(["Home"]);
 
   const { slug } = params
-  console.log("Slug:", slug)
   console.log(`Params: ${JSON.stringify(params)}`)
 
   return (

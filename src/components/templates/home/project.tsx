@@ -1,6 +1,6 @@
 import React from "react";
-import ProjectList from "@/lib/ProjectList.json";
-import ProjectCard from "@/components/molecule/card/ProjectCard";
+import ProjectList from "@/src/lib/ProjectList.json";
+import ProjectCard from "@/src/components/molecule/card/ProjectCard";
 
 function Project() {
   return (

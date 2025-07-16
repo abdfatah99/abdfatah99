@@ -1,14 +1,14 @@
-import { psContentNavContext } from "@/contexts/personal-notes/personal-notes-context";
-import { Button } from "@/components/ui/button";
-import CardDisplayOne from "@/components/molecule/card/ExperienceCard";
-import ContentNavigation from "@/components/molecule/notes-content-navigation";
-import Navbar from "@/components/organism/Navbar";
+import { psContentNavContext } from "@/src/contexts/personal-notes/personal-notes-context";
+import { Button } from "@/src/components/ui/button";
+import CardDisplayOne from "@/src/components/molecule/card/ExperienceCard";
+import ContentNavigation from "@/src/components/molecule/notes-content-navigation";
+import Navbar from "@/src/components/organism/Navbar";
 import React, { useContext } from "react";
-import PSNotesMaterialCard from "@/components/molecule/card/PersonalNotesMaterialCard";
+import PSNotesMaterialCard from "@/src/components/molecule/card/PersonalNotesSubjectCard";
 import { Dirent } from "fs";
-import { PSDirectory } from "@/lib/personal-notes-directory";
-import { Logger } from "@/lib/logging";
-import MaterialCardGrid from "@/components/organism/MaterialCardGrid";
+import { PSDirectory } from "@/src/utils/PSNode";
+import { Logger } from "@/src/lib/logging";
+import MaterialCardGrid from "@/src/components/organism/MaterialCardGrid";
 
 const log = new Logger(
   "src/component/templates/personal-notes/TPSHomePage.tsx",
@@ -45,6 +45,7 @@ function TPSHomePage({ domainMaterial }: ITPSHomePage) {
   // log.logFlow("get data from page.tsx into page template", props.domain)
 
   const listOfDomainMaterial = domainMaterial.getChildrenDirectory();
+  log.logFlow("check home list of material: ", listOfDomainMaterial);
 
   return (
     <>

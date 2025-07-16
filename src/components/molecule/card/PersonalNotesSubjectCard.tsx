@@ -5,13 +5,13 @@
  */
 import Image from "next/image";
 import React from "react";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/src/components/ui/button";
 import Link from "next/link";
 
 interface IPSNotesMaterial {
-  image: string;
+  image?: string;
   title: string;
-  desc: string;
+  desc?: string;
   practiceCode?: string; // use as link to the practice code in github
   materialLink?: string; // use as "go to the material" in personal-notes
   onClick?: () => void;
@@ -26,21 +26,22 @@ interface IPSNotesMaterial {
  * @param props
  * @returns
  */
-function PSNotesMaterialCard(props: IPSNotesMaterial) {
+function PSNotesSubjectCard(props: IPSNotesMaterial) {
   return (
     <div className="flex h-[335px] w-[156px] flex-col rounded-xl p-4 shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px]">
       <Image
-        src={props.image}
+        src={props.image ? props.image : "#"}
         alt={props.title}
         width={100}
         height={100}
-        className="m-auto h-[87px] w-[128px] flex-none rounded-t-xl bg-yellow-200"
+        className="m-auto h-[87px] w-[128px] flex-none rounded-t-xl"
       />
 
       <div className="mt-2 flex flex-grow flex-col ">
         <div className="flex-grow">
+          {/* {props.materialLink} */}
           <Link href={props.materialLink ? props.materialLink : "#"}>
-            <h1 className="mb-2 bg-yellow-200 text-xs font-semibold leading-4">
+            <h1 className="mb-2 text-xs font-semibold leading-4">
               {props.title}
             </h1>
           </Link>
@@ -81,4 +82,4 @@ function PSNotesMaterialCard(props: IPSNotesMaterial) {
   );
 }
 
-export default PSNotesMaterialCard;
+export default PSNotesSubjectCard;

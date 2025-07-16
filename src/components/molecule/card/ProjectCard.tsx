@@ -5,7 +5,7 @@
  */
 import Image from "next/image";
 import React from "react";
-import { Button } from "@/components/ui/button";
+import { Button } from "@/src/components/ui/button";
 import Link from "next/link";
 
 interface IProjectCard {

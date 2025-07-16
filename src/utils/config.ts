@@ -18,7 +18,10 @@ const config = {
       link: "blog",
     },
   ],
-  psHomePath: path.join("src", "personal-notes"),
+  psBase: "personal-notes/",
+  // psBasePath: "personal-notes", // relative to "src"
+  // psHomePath: path.join(process.cwd(), "src", "personal-notes"),
+  psAllowedExtensions: [".md", ".mdx"],
 };
 
 export default config;

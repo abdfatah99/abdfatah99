@@ -1,17 +1,24 @@
-import nextMDX from "@next/mdx";
+import createMDX from "@next/mdx";
 import rehypePrettyCode from "rehype-pretty-code";
 import rehypeSlug from "rehype-slug";
+import remarkFrontmatter from "remark-frontmatter"
+// import myUnifiedPluginHandlingYamlMatter from './src/lib/my-unified-plugin-handling-yaml-matter'
 
 /** @type {import('rehype-pretty-code').Options} */
 const options = {
-  theme: "github-light",
+  theme: "one-dark-pro",
 };
 
-const withMDX = nextMDX({
+const withMDX = createMDX({
   extension: /\.(md|mdx)$/,
   options: {
-    remarkPlugins: [],
+    // source: https://github.com/remarkjs/remark-frontmatter?tab=readme-ov-file#example-frontmatter-as-metadata
+    // remarkPlugins: [remarkFrontmatter, myUnifiedPluginHandlingYamlMatter],
+
+    remarkPlugins: [remarkFrontmatter],
     rehypePlugins: [[rehypePrettyCode, options], rehypeSlug],
+
+    // rehypePlugins: [rehypeSlug],
   },
 });
 
