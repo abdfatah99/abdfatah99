@@ -10,7 +10,7 @@ interface Params {
 
 export async function generateStaticParams(){
   const categories = fs.readdirSync(path.join('src', 'personal-notes', 'content'))
-  console.log("[personal-notes > layout > generateStaticParams] categories:", categories)
+  // console.log("[personal-notes > layout > generateStaticParams] categories:", categories)
 
   return categories.map((category) => ({
     slug: category
@@ -28,7 +28,7 @@ export default function PersonalNotesLayout({
   // const [nav, setNav] = useState<string[]>(["Home"]);
 
   const { slug } = params
-  console.log(`Params: ${JSON.stringify(params)}`)
+  // console.log(`Params: ${JSON.stringify(params)}`)
 
   return (
     // <psContentNavContext.Provider value={{ nav, setNav }}>

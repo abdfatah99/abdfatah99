@@ -9,6 +9,8 @@
  */
 
 // import ReadmePersonalNotes, { metadata } from "../../../../personal-notes/README.md";
+import ReadmePersonalNotesSRC from "@src/app/README.md";
+import ReadmePersonalNotesPS from "@ps/README.md";
 // import metadata from "../../../../personal-notes/README.md";
 
 function TPSMaterial({ children }: { children?: React.ReactNode }) {
@@ -24,11 +26,13 @@ function TPSMaterial({ children }: { children?: React.ReactNode }) {
                     prose-h4:text-2xl 
                     prose-h5:text-xl 
                     prose-h6:text-lg 
-                  dark:prose-headings:text-white`}
+                  dark:prose-headings:text-white
+                    prose-p:text-justify`}
     >
       {children}
       {/* <p>{ metadata }</p> */}
-      {/* <ReadmePersonalNotes /> */}
+      {/* <ReadmePersonalNotesSRC /> */}
+      {/* <ReadmePersonalNotesPS /> */}
       <hr />
       <hr />
       <hr />

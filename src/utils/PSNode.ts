@@ -293,15 +293,15 @@ export class PSDirectory extends PSNode {
     if (this.#children) return this.#children;
 
     const dirents = fs.readdirSync(this.NodeDirPath, { withFileTypes: true });
-    console.log("dirents: ", dirents);
+    // console.log("dirents: ", dirents);
 
     this.#children = dirents
       .filter((dir) => {
-        console.log("dir status:", dir.isDirectory());
+        // console.log("dir status:", dir.isDirectory());
         return dir.isDirectory();
       })
       .map((dir) => {
-        console.log("check dir in children directory", dir);
+        // console.log("check dir in children directory", dir);
         return new PSDirectory(path.join(this.NodeDirPath, dir.name));
       });
 

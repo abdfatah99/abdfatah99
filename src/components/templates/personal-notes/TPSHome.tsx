@@ -45,7 +45,7 @@ function TPSHomePage({ domainMaterial }: ITPSHomePage) {
   // log.logFlow("get data from page.tsx into page template", props.domain)
 
   const listOfDomainMaterial = domainMaterial.getChildrenDirectory();
-  log.logFlow("check home list of material: ", listOfDomainMaterial);
+  // log.logFlow("check home list of material: ", listOfDomainMaterial);
 
   return (
     <>

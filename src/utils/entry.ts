@@ -81,7 +81,7 @@ export function EntryStatus(
 
   try {
     const stats = fs.statSync(fullPath);
-    console.log("stas: ", stats);
+    // console.log("stas: ", stats);
     if (stats.isDirectory()) return "directory";
     if (stats.isFile()) return "file";
   } catch (err) {
