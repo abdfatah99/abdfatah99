@@ -7,10 +7,10 @@ function Footer() {
     <div className="container mb-8 grid grid-cols-2 gap-x-4">
       <div className="">
         <p className="text-xs font-normal text-gray-500">
-          Ilmu adalah yang memberikan manfaat, bukan yang sekadar hanya dihafal.
+          Knowledge is not what is memorized, but what benefits.
           <br />
           <br />
-          Imam Syafi&apos;i
+          Imam ash-Shafi&apos;i
         </p>
       </div>
       <div className="ml-8">
