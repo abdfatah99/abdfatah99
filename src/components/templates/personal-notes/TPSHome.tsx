@@ -8,7 +8,6 @@ import PSNotesMaterialCard from "@/src/components/molecule/card/PersonalNotesSub
 import { Dirent } from "fs";
 import { PSDirectory } from "@/src/utils/PSNode";
 import { Logger } from "@/src/lib/logging";
-import MaterialCardGrid from "@/src/components/organism/MaterialCardGrid";
 
 const log = new Logger(
   "src/component/templates/personal-notes/TPSHomePage.tsx",
@@ -58,8 +57,18 @@ function TPSHomePage({ domainMaterial }: ITPSHomePage) {
       <div className="container">
         <p className="my-2 text-xs text-slate-500">Fatah Personal Notes</p>
 
-        <div>
-          <MaterialCardGrid directories={listOfDomainMaterial} />
+        <div className="mt-3 grid grid-cols-2 gap-4">
+          {listOfDomainMaterial.map((dir: PSDirectory, index: number) => {
+            return (
+              <PSNotesMaterialCard
+                key={index}
+                image="/personal-notes/sql-server.png"
+                title={dir.getName()}
+                desc={dir.getDescription()}
+                materialLink={dir.getURLPath()}
+              />
+            );
+          })}
         </div>
       </div>
     </>

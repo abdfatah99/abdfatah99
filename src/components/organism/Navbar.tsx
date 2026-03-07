@@ -14,12 +14,11 @@ import { HamburgerMenuIcon, LayersIcon } from "@radix-ui/react-icons";
 import config from "@/src/utils/config";
 import { Dancing_Script } from "next/font/google";
 
-import { Dialog, DialogContent, DialogTrigger } from "@/src/components/ui/dialog";
-
-// import profilePhoto from "../../../public/navbar/profile-foto.png";
-
-// you can import an image and rename it like this, but i this is too much
-// import profileFoto from "../../../public/navbar/profile-foto.png"
+import {
+  Dialog,
+  DialogContent,
+  DialogTrigger,
+} from "@/src/components/ui/dialog";
 
 const dancing_script = Dancing_Script({ subsets: ["latin"] });
 
@@ -27,7 +26,7 @@ function Navbar() {
   return (
     <>
       <nav className="container flex h-16 flex-row items-center justify-between">
-        <Link href={"/"} className="flex flex-row justify-center space-x-2">
+        <div className="flex flex-row items-center gap-2">
           <Dialog>
             <form>
               <DialogTrigger asChild>
@@ -54,12 +53,14 @@ function Navbar() {
             </form>
           </Dialog>
 
-          <div className="w-auto text-center">
-            <div className={dancing_script.className}>
-              <p className="h-[33px] text-2xl font-medium">Abdul Fatah</p>
+          <Link href={"/"} className="flex flex-row justify-center space-x-2">
+            <div className="w-auto text-center">
+              <div className={dancing_script.className}>
+                <p className="h-[33px] text-2xl font-medium">Abdul Fatah</p>
+              </div>
             </div>
-          </div>
-        </Link>
+          </Link>
+        </div>
 
         <Sheet>
           <SheetTrigger>

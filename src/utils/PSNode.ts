@@ -225,7 +225,9 @@ abstract class PSNode {
 
   constructor(entryPath: string) {
     this.NodeDirPath = entryPath;
-    this.Name = path.basename(entryPath);
+    this.Name = path.basename(entryPath); 
+    // .basename('/foo/bar/baz/asdf/quux.html')
+    // Output: 'quux.html'
     this.metadata = {
       title: "",
       description: "",
