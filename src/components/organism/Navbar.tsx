@@ -22,6 +22,10 @@ import {
 
 const dancing_script = Dancing_Script({ subsets: ["latin"] });
 
+// todo
+// home page: pocket prime (with logo)
+// about me: abdul fatah (with my foto)
+
 function Navbar() {
   return (
     <>

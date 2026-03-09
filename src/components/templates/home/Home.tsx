@@ -8,8 +8,6 @@ import Experience from "./experience";
 function Home() {
   return (
     <>
-      <Navbar />
-
       {/* -- Welcome Text */}
       <WelcomeText />
 

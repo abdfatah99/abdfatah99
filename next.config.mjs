@@ -1,7 +1,7 @@
 import createMDX from "@next/mdx";
 import rehypePrettyCode from "rehype-pretty-code";
 import rehypeSlug from "rehype-slug";
-import remarkFrontmatter from "remark-frontmatter"
+import remarkFrontmatter from "remark-frontmatter";
 // import myUnifiedPluginHandlingYamlMatter from './src/lib/my-unified-plugin-handling-yaml-matter'
 
 /** @type {import('rehype-pretty-code').Options} */
