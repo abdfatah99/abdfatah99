@@ -7,7 +7,6 @@ export default async function PersonalNotesLayout({
 }) {
   return (
     <>
-      <Navbar />
       <div className="">{children}</div>
     </>
   );

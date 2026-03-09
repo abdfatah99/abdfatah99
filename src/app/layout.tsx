@@ -1,10 +1,10 @@
-import "../styles/global.css"
+import "../styles/global.css";
 import type { Metadata } from "next";
 import { Inter, Geist } from "next/font/google";
 import Navbar from "../components/organism/Navbar";
 import { cn } from "@/lib/utils";
 
-const geist = Geist({subsets:['latin'],variable:'--font-sans'});
+const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -21,9 +21,9 @@ export default function RootLayout({
   return (
     <html lang="en" className={cn("font-sans", geist.variable)}>
       <body className={inter.className}>
-        {/* <Navbar />
-        {children} */}
-        <p className="bg-yellow-300">hello world</p>
+        <Navbar />
+        {children}
+        {/* <p className="bg-yellow-300">hello world</p> */}
       </body>
     </html>
   );

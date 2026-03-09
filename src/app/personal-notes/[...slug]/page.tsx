@@ -64,6 +64,7 @@ export default async function Page({ params }: IPageProps) {
 
   if (entryStatus == "file") {
     const { default: Post } = await import(`../../../../${importablePath}.md`);
+    // console.log(Post)
     // const { default: Post } = await import(`@/personal-notes/${importablePath}.md`)
 
     const material = new PSMaterial(path.join(config.psBase, ...slug));
