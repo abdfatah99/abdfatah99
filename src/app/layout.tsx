@@ -1,8 +1,10 @@
-import "../styles/global.css";
+import "@src/styles/global.css";
 import type { Metadata } from "next";
 import { Inter, Geist } from "next/font/google";
-import Navbar from "../components/organism/Navbar";
-import { cn } from "@/lib/utils";
+import Navbar from "../components/Navbar";
+import { cn } from "@src/lib/utils";
+import "material-symbols";
+import Footer from "../components/Footer";
 
 const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -20,10 +22,10 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en" className={cn("font-sans", geist.variable)}>
-      <body className={inter.className}>
+      <body className={`${inter.className} flex min-h-screen flex-col`}>
         <Navbar />
-        {children}
-        {/* <p className="bg-yellow-300">hello world</p> */}
+        <main className="flex-1 mb-6">{children}</main>
+        <Footer />
       </body>
     </html>
   );

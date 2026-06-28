@@ -271,8 +271,9 @@ export class PSDirectory extends PSNode {
 
   constructor(entryPath: string) {
     super(entryPath);
+    
+    // README.md file is an anchor that entryPath is Directory of material
     this.readmePath = path.join(entryPath, "README.md");
-    // this.metadata = {};
 
     if (fs.existsSync(this.readmePath)) {
       const readmeContent = fs.readFileSync(this.readmePath, "utf-8");

@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    // "ignoreDepreciations": "6.0",
     "target": "ES6",
     "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
@@ -19,13 +20,14 @@
         "name": "next"
       }
     ],
-    "baseUrl": ".",
+    // "baseUrl": ".",
     "paths": {
       "@/*": ["./*"],
-      "@ps/*": ["./personal-notes/*"],
+      "@ps/*": ["./personal-notes-material/*"],
       "@src/*": ["./src/*"]
     }
   },
+
   "include": [
     "next-env.d.ts",
     "**/*.ts",

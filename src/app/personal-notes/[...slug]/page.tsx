@@ -3,8 +3,8 @@ import { Logger } from "@src/lib/logging";
 import { PSDirectory, PSMaterial } from "@src/utils/PSNode";
 import path from "path";
 import { EntryStatus, getAllSlugPathFrom } from "@src/utils/entry";
-import { PSNotePageTemplate } from "@src/components/templates/personal-notes/TPSDomain";
-import TPSMaterial from "@src/components/templates/personal-notes/TPSMaterial";
+import { PSNotePageTemplate } from "@/src/app/personal-notes/components/TPSDomain";
+import TPSMaterial from "@/src/app/personal-notes/components/TPSMaterial";
 // import style from "./page.module.css";
 
 const log = new Logger("src/app/personal-notes/[domain]/page.tsx");

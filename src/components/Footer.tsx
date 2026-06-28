@@ -1,0 +1,55 @@
+import Image from "next/image";
+import Link from "next/link";
+import React from "react";
+
+function Footer() {
+  return (
+    <div className="border-t">
+      <div className="container grid grid-cols-2 justify-between gap-x-4 pb-8 pt-8">
+        <div className="">
+          <p className="text-xs font-normal text-gray-500">
+            Knowledge is not what is memorized, but what benefits.
+            <br />
+            <br />
+            Imam ash-Shafi&apos;i
+          </p>
+        </div>
+        <div className="ml-8 flex flex-col items-end">
+          <p className="text-xs font-normal text-gray-500">Contact</p>
+          <div className="mt-2 flex flex-row items-center gap-2">
+            <Link href={"/"}>
+              <Image
+                src={"/Footer/Linkedin.svg"}
+                alt="Linkedin"
+                width={100}
+                height={100}
+                className="h-4 w-4"
+              />
+            </Link>
+            <Link href={"/"}>
+              <Image
+                src={"/Footer/Gmail.svg"}
+                alt="Linkedin"
+                width={100}
+                height={100}
+                className="h-4 w-4"
+              />
+            </Link>
+
+            <Link href={"/"}>
+              <Image
+                src={"/Footer/Twitter.svg"}
+                alt="Linkedin"
+                width={100}
+                height={100}
+                className="h-3 w-3"
+              />
+            </Link>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default Footer;

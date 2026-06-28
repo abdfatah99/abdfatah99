@@ -3,9 +3,9 @@ import path from "path";
 const config = {
   navbarMenu: [
     {
-      name: "Home",
+      name: "About Me",
       id: "#Home",
-      link: "/",
+      link: "about-me",
     },
     {
       name: "Personal Notes",
@@ -22,6 +22,7 @@ const config = {
   // psBasePath: "personal-notes", // relative to "src"
   // psHomePath: path.join(process.cwd(), "src", "personal-notes"),
   psAllowedExtensions: [".md", ".mdx"],
+  blogBase: "blog/",
 };
 
 export default config;

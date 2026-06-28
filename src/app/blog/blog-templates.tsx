@@ -61,13 +61,13 @@ const mockPosts: BlogPost[] = [
 export default function BlogUpdates() {
   return (
     <section
-      className="flex w-full flex-col bg-red-100"
+      className="flex w-full flex-col"
       style={{ height: "40vh", minHeight: "260px" }}
     >
-      {/* Header */}
-      <div className="flex shrink-0 items-baseline justify-between px-6 pb-3 pt-6 dark:border-neutral-800">
+      {/* Header - latest block post*/}
+      <div className="flex shrink-0 items-baseline justify-between pb-3 pt-6 dark:border-neutral-800">
         <div className="flex items-center gap-2.5">
-          <span className="inline-block h-2 w-2 rounded-full bg-amber-400" />
+          {/* <span className="inline-block h-2 w-2 rounded-full bg-amber-400" /> */}
           <h2
             className="text-sm font-semibold uppercase tracking-widest text-neutral-500 dark:text-neutral-400"
             style={{ fontFamily: "'Geist Mono', 'JetBrains Mono', monospace" }}
@@ -85,42 +85,43 @@ export default function BlogUpdates() {
       </div>
 
       {/* Scrollable list */}
-      <ul className="flex-1 divide-y divide-neutral-100 overflow-y-auto scroll-smooth dark:divide-neutral-800/60">
+      <ul className="flex flex-col gap-3.5 divide-y divide-neutral-100 overflow-y-auto scroll-smooth dark:divide-neutral-800/60">
         {mockPosts.map((post) => (
           <li key={post.id}>
             <Link
               href={`/blog/${post.id}`}
-              className="group flex items-start gap-4 px-6 py-3.5 transition-colors duration-150 hover:bg-amber-50/60 dark:hover:bg-amber-950/20"
+              className="group flex items-start gap-4 px-0.5 transition-colors duration-150 hover:bg-amber-50/60 dark:hover:bg-amber-950/20"
             >
-              {/* Tag pill */}
-              {/* Content */}
               <div className="min-w-0 flex-1">
-                <p className="truncate text-sm font-medium text-neutral-800 transition-colors duration-150 group-hover:text-amber-700 dark:text-neutral-100 dark:group-hover:text-amber-400">
-                  {post.title}
-                </p>
-                <p className="mt-0.5 truncate text-xs leading-relaxed text-neutral-400 dark:text-neutral-500">
-                  {post.excerpt}
-                </p>
+              {/* Tag pill */}
                 <span
                   className="mt-0.5 shrink-0 rounded bg-neutral-100 px-2 py-0.5 text-[10px] font-medium text-neutral-500 transition-colors duration-150 group-hover:bg-amber-100 group-hover:text-amber-700 dark:bg-neutral-800 dark:text-neutral-400 dark:group-hover:bg-amber-900/40 dark:group-hover:text-amber-400"
                   style={{ fontFamily: "monospace" }}
                 >
                   {post.tag}
                 </span>
+
+                {/* Content */}
+                <p className="truncate text-sm font-medium text-neutral-800 transition-colors duration-150 group-hover:text-amber-700 dark:text-neutral-100 dark:group-hover:text-amber-400">
+                  {post.title}
+                </p>
+                <p className="mt-0.5 truncate text-xs leading-relaxed text-neutral-400 dark:text-neutral-500">
+                  {post.excerpt}
+                </p>
+
+                <div
+                  className="mt-2 shrink-0"
+                  style={{ fontFamily: "monospace" }}
+                >
+                  <p className="text-[11px] text-neutral-400 dark:text-neutral-500">
+                    {post.date}
+                  </p>
+                  <p className="text-[11px] text-neutral-300 dark:text-neutral-600">
+                    {post.readTime}
+                  </p>
+                </div>
               </div>
 
-              {/* Meta */}
-              <div
-                className="shrink-0 text-right"
-                style={{ fontFamily: "monospace" }}
-              >
-                <p className="text-[11px] text-neutral-400 dark:text-neutral-500">
-                  {post.date}
-                </p>
-                <p className="mt-0.5 text-[11px] text-neutral-300 dark:text-neutral-600">
-                  {post.readTime}
-                </p>
-              </div>
             </Link>
           </li>
         ))}
