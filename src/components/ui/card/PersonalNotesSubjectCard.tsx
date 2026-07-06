@@ -28,17 +28,18 @@ interface IPSNotesMaterial {
  */
 function PSNotesSubjectCard(props: IPSNotesMaterial) {
   return (
-    <div className="flex h-[335px] w-[156px] flex-col rounded-xl p-4 shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px]">
+    // <div className="flex h-83.75 w-39 flex-col rounded-xl p-4 shadow-[rgba(0,0,0,0.24)_0px_3px_8px]">
+    <div className="flex h-83.75 w-39 flex-col rounded-xl p-4 bg-light-grey">
       <Image
         src={props.image ? props.image : "#"}
         alt={props.title}
         width={100}
         height={100}
-        className="m-auto h-[87px] w-[128px] flex-none rounded-t-xl"
+        className="m-auto h-21.75 w-32 flex-none rounded-t-xl"
       />
 
-      <div className="mt-2 flex flex-grow flex-col ">
-        <div className="flex-grow">
+      <div className="mt-2 flex grow flex-col ">
+        <div className="grow">
           {/* {props.materialLink} */}
           <Link href={props.materialLink ? props.materialLink : "#"}>
             <h1 className="mb-2 text-xs font-semibold leading-4">

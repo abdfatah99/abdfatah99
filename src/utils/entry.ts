@@ -68,6 +68,10 @@ export function getAllSlugPathFrom(baseDir: string): string[][] {
  * - Personal Notes Dynamic Page
  * - PSDirectory: Checking given path children is file or directory
  *
+ * @example
+ * entry: "src\personal-notes\database\readme"
+ * result status: file
+ *
  * @param inputPath: Raw input string (e.g., "notes/js/intro")
  * @returns "file" | "directory" | "not_found"
  */
@@ -76,6 +80,8 @@ export function EntryStatus(
 ): "directory" | "file" | "not_found" {
   // console.log("input path:", inputPath);
   const fullPath = path.resolve(inputPath);
+
+  // console.log(process.cwd());
 
   // log.logFlow("Resolve path from given url", fullPath);
 
@@ -125,20 +131,22 @@ function EntryStatusNew(inputPath: string): "directory" | "file" | "not_found" {
     // 2. search over the dirname for file
     // 3. select only .md or .mdx file
     const dirName = path.dirname(fullPath);
-    const fileBaseName = path.basename(fullPath)
+    const fileBaseName = path.basename(fullPath);
 
     const listOfFile = fs
       .readdirSync(dirName, { withFileTypes: true })
-      .filter( entry => entry.isFile())
-      .filter( entry => entry.name.endsWith(".md") || entry.name.endsWith(".mdx"))
+      .filter((entry) => entry.isFile())
+      .filter(
+        (entry) => entry.name.endsWith(".md") || entry.name.endsWith(".mdx"),
+      );
 
     for (const e of listOfFile) {
-      const entryBaseName = path.basename(e.path)
-      if (entryBaseName == fileBaseName) return "file"
+      const entryBaseName = path.basename(e.path);
+      if (entryBaseName == fileBaseName) return "file";
     }
 
     // if (listOfFile) return "file"
-    
+
     return "not_found";
   }
 

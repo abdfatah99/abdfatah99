@@ -1,8 +1,8 @@
-import { psContentNavContext } from "@/src/contexts/personal-notes/personal-notes-context";
-import { Button } from "@/src/components/ui/button";
-import CardDisplayOne from "@/src/components/ui/card/ExperienceCard";
-import ContentNavigation from "@/src/components/ui/notes-content-navigation";
-import Navbar from "@/src/components/organism/Navbar";
+// import { psContentNavContext } from "@/src/contexts/personal-notes/personal-notes-context";
+// import { Button } from "@/src/components/ui/button";
+// import CardDisplayOne from "@/src/components/ui/card/ExperienceCard";
+// import ContentNavigation from "@/src/components/ui/notes-content-navigation";
+// import Navbar from "@/src/components/organism/Navbar";
 import React, { useContext } from "react";
 import PSNotesMaterialCard from "@/src/components/ui/card/PersonalNotesSubjectCard";
 import { Dirent } from "fs";

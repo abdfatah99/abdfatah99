@@ -3,10 +3,11 @@ import path from "path";
 const config = {
   navbarMenu: [
     {
-      name: "About Me",
-      id: "#Home",
-      link: "about-me",
+      name: "Home",
+      id: "#home",
+      link: "",
     },
+
     {
       name: "Personal Notes",
       id: "#personal-notes",
@@ -16,6 +17,11 @@ const config = {
       name: "Blog",
       id: "#blog",
       link: "blog",
+    },
+    {
+      name: "About Me",
+      id: "#Home",
+      link: "about-me",
     },
   ],
   psBase: "personal-notes/",

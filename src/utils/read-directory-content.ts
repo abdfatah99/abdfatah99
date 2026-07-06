@@ -1,4 +1,3 @@
-import { metadata } from "./../app/layout";
 import frontMatter from "front-matter";
 import fs from "fs";
 import { MDFileMetadata } from "./read-directory-content.types";
@@ -8,7 +7,7 @@ import { Logger } from "../lib/logging";
 
 const log = new Logger("src/utils/read-directory-content.ts");
 
-abstract class DirectoryNode {
+abstract class Node {
   protected dirNodePath: string;
   #name: string = ""; // fileName or directoryName
   protected dirNodeURLPath: string;
@@ -18,8 +17,7 @@ abstract class DirectoryNode {
   constructor(dirEntryPath: string) {
     this.dirNodePath = dirEntryPath;
     this.#name = path.basename(dirEntryPath);
-    // .basename('/foo/bar/baz/asdf/quux.html')
-    // Output: 'quux.html'
+    // .basename('/foo/bar/baz/asdf/quux.html') -> output: 'quux.html'
     this.metadata = {
       title: "",
       description: "",
@@ -55,7 +53,7 @@ abstract class DirectoryNode {
   }
 }
 
-export class Directory extends DirectoryNode {
+export class Directory extends Node {
   // children directory of directory entry
   #children: Directory[] | null = null;
   // list of material in the directory entry
@@ -141,7 +139,7 @@ export class Directory extends DirectoryNode {
   }
 }
 
-export class Material extends DirectoryNode {
+export class Material extends Node {
   protected materialPath: string;
   protected fileName: string;
 

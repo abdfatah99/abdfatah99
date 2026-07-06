@@ -1,11 +1,11 @@
-import Image from "next/image";
+// import Image from "next/image";
 
-import ExperienceCard from "@/src/components/ui/card/ExperienceCard";
-import Footer from "@/src/components/organism/Footer";
+// import ExperienceCard from "@/src/components/ui/card/ExperienceCard";
+// import Footer from "@/src/components/organism/Footer";
 
-import ExperienceList from "@src/lib/ExperienceList.json";
-import ProjectList from "@src/lib/ProjectList.json";
-import ProjectCard from "@/src/components/ui/card/ProjectCard";
+// import ExperienceList from "@src/lib/ExperienceList.json";
+// import ProjectList from "@src/lib/ProjectList.json";
+// import ProjectCard from "@/src/components/ui/card/ProjectCard";
 import CalloutMD from "../../features/about-me/components/callout";
 
 // export default function AboutMe() {
@@ -292,7 +292,7 @@ export default function AboutMe() {
               Open for Opportunities
             </h3>
             <p className="text-on-surface-variant text-sm leading-relaxed">
-              Let's build something precise and permanent. I'm currently looking
+              Let&apos;s build something precise and permanent. I&apos;m currently looking
               for new projects and connections.
             </p>
             <button className="bg-primary w-full  border border-zinc-900 py-4 text-xs font-bold uppercase tracking-widest text-white">

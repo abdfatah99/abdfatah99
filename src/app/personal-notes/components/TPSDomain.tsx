@@ -25,7 +25,7 @@ export function PSNotePageTemplate(props: ITPSDomain) {
   const notes = props.domain.getNotesList();
 
   return (
-    <div>
+    <div className="">
       <p className="my-4 text-gray-700">{description}</p>
 
       <div className="mt-3 grid grid-cols-2 gap-4 ">

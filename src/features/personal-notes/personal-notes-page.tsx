@@ -1,6 +1,11 @@
-import CardTemplate from "@/src/components/CardTemplate";
-// import SkillCard, { TopicCard, TopicCardDescription, TopicCardIcon, TopicCardTitle } from "./components/TopicCard";
-import { Braces, Code, Database, Terminal, Workflow } from "lucide-react";
+import {
+  ArrowRight,
+  Braces,
+  Code,
+  Database,
+  Terminal,
+  Workflow,
+} from "lucide-react";
 import Link from "next/link";
 import {
   TopicCard,
@@ -57,12 +62,14 @@ export default function PersonalNotesPage() {
         </TopicCard>
 
         <TopicCard variant={"dark"}>
-          <TopicCardHeader>
-            <TopicCardIcon>
-              <Terminal />
-            </TopicCardIcon>
-            <TopicCardTitle>Software Engineering</TopicCardTitle>
-          </TopicCardHeader>
+          <Link href={"#"}>
+            <TopicCardHeader>
+              <TopicCardIcon>
+                <Terminal />
+              </TopicCardIcon>
+              <TopicCardTitle>Software Engineering</TopicCardTitle>
+            </TopicCardHeader>
+          </Link>
           <TopicCardDescription>
             System architectures, scalability patterns, and the discipline of
             crafting maintainable technical foundations.
@@ -84,58 +91,69 @@ export default function PersonalNotesPage() {
         {/* 
 
         TODO:
-        1. This section should display random/all remaining material from
-           software engineering
-           - if random, pick random material to define as front representative
-             add button to see all software engineering material
-           - for "all material", it's not possible because it's to much to display at 
-             front
-           - certain material, you have to choose particular material to display
-             in the front.
+        The material listed in the front of application is curated by architecture 
+        design of how the front-end app access the data behind.
+        The static material (display in the app statically) is selected because 
+        the file is located in the FE project while the rest of the material is 
+        located in the object storage (outside FE, need to fetch data to BE).
+        This also could be solve the problem of defining icon for representing the
+        material, because it static, it should be easy to choose the icon and stick
+        with it.
 
-           thought, I think certain material is the most possible, because it 
-           related with the icon that we should choose along with the material 
-           name. we can't arbitrary pick icon for the card
-        
         */}
         <div className="grid auto-cols-[276px] grid-flow-col gap-4 overflow-x-scroll ">
-          <TopicCard className="border-t-4 border-black">
-            <TopicCardHeader className="flex flex-col">
-              <TopicCardIcon>
-                <Braces />
-              </TopicCardIcon>
-              <TopicCardTitle>Algorithm</TopicCardTitle>
-            </TopicCardHeader>
-            <TopicCardDescription>
-              Complexity Analysis, Sorting, Primitives and Advanced Graph
-              Traversals
-            </TopicCardDescription>
-          </TopicCard>
-          <TopicCard className="border-t-4 border-black">
-            <TopicCardHeader className="flex flex-col">
-              <TopicCardIcon>
-                <Database />
-              </TopicCardIcon>
-              <TopicCardTitle>Database</TopicCardTitle>
-            </TopicCardHeader>
-            <TopicCardDescription>
-              ACID Principles, Indexing Strategies, and Distributed consensus
-              mechanism.
-            </TopicCardDescription>
-          </TopicCard>
-          <TopicCard className="border-t-4 border-black">
-            <TopicCardHeader className="flex flex-col">
-              <TopicCardIcon>
-                <Workflow />
-              </TopicCardIcon>
-              <TopicCardTitle>DevOps</TopicCardTitle>
-            </TopicCardHeader>
-            <TopicCardDescription>
-              Container orchestration, CI/CD, pipelines, and infrastructure as
-              code
-            </TopicCardDescription>
-          </TopicCard>
+          <Link href={"#"}>
+            <TopicCard className="border-t-4 border-black">
+              <TopicCardHeader className="flex flex-col">
+                <TopicCardIcon>
+                  <Braces />
+                </TopicCardIcon>
+                <TopicCardTitle>Algorithm</TopicCardTitle>
+              </TopicCardHeader>
+              <TopicCardDescription>
+                Complexity Analysis, Sorting, Primitives and Advanced Graph
+                Traversals
+              </TopicCardDescription>
+            </TopicCard>
+          </Link>
+
+          <Link href={"personal-notes/database"}>
+            <TopicCard className="border-t-4 border-black">
+              <TopicCardHeader className="flex flex-col">
+                <TopicCardIcon>
+                  <Database />
+                </TopicCardIcon>
+                <TopicCardTitle>Database</TopicCardTitle>
+              </TopicCardHeader>
+              <TopicCardDescription>
+                ACID Principles, Indexing Strategies, and Distributed consensus
+                mechanism.
+              </TopicCardDescription>
+            </TopicCard>
+          </Link>
+
+          <Link href={"#"}>
+            <TopicCard className="border-t-4 border-black">
+              <TopicCardHeader className="flex flex-col">
+                <TopicCardIcon>
+                  <Workflow />
+                </TopicCardIcon>
+                <TopicCardTitle>DevOps</TopicCardTitle>
+              </TopicCardHeader>
+              <TopicCardDescription>
+                Container orchestration, CI/CD, pipelines, and infrastructure as
+                code
+              </TopicCardDescription>
+            </TopicCard>
+          </Link>
         </div>
+
+        <Link href={"personal-notes/list"} className="flex flex-row items-center gap-2">
+          <p className="text-sm font-bold uppercase tracking-widest">
+            view full archive
+          </p>
+          <ArrowRight className="w-3.5 h-3.5" />
+        </Link>
       </section>
     </div>
   );
