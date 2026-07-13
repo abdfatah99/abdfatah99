@@ -6,8 +6,8 @@
 import React, { useContext } from "react";
 import PSNotesMaterialCard from "@/src/components/ui/card/PersonalNotesSubjectCard";
 import { Dirent } from "fs";
-import { PSDirectory } from "@/src/utils/PSNode";
 import { Logger } from "@/src/lib/logging";
+import { Directory } from "@/src/utils/read-directory-content";
 
 const log = new Logger(
   "src/component/templates/personal-notes/TPSHomePage.tsx",
@@ -16,7 +16,7 @@ const log = new Logger(
 // here where you have to update the personal notes context
 
 interface ITPSHomePage {
-  domainMaterial: PSDirectory;
+  domainMaterial: Directory;
 }
 
 // TemplatePersonalNotesHomePage
@@ -58,14 +58,14 @@ function TPSHomePage({ domainMaterial }: ITPSHomePage) {
         <p className="my-2 text-xs text-slate-500">Fatah Personal Notes</p>
 
         <div className="mt-3 grid grid-cols-2 gap-4">
-          {listOfDomainMaterial.map((dir: PSDirectory, index: number) => {
+          {listOfDomainMaterial.map((dir: Directory, index: number) => {
             return (
               <PSNotesMaterialCard
                 key={index}
                 image="/personal-notes/sql-server.png"
                 title={dir.getName()}
                 desc={dir.getDescription()}
-                materialLink={dir.getURLPath()}
+                materialLink={dir.getDirNodeURLPath()}
               />
             );
           })}

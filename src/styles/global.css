@@ -81,9 +81,9 @@
   --on-primary: oklch(0.9796 0.0061 317.75); /* #faf7fb; */
   --color-light-grey: oklch(0.9791 0 0); /* card, badge, tag*/
   --color-medium-grey: oklch(0.7118 0.0129 286.07);
-    /* #A1A1AA -> mostly for dark theme, description */
-    --color-heavy-grey: oklch(0.3966 0.0068 297);
-    /* #47464A -> description, text, title*/;
+  /* #A1A1AA -> mostly for dark theme, description */
+  --color-heavy-grey: oklch(0.3966 0.0068 297);
+  /* #47464A -> description, text, title*/
 
   --color-light-blue: oklch(0.9658 0.0148 294.47); /* card */
 }

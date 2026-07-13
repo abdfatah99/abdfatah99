@@ -1,10 +1,10 @@
 import "@src/styles/global.css";
 import type { Metadata } from "next";
 import { Inter, Geist } from "next/font/google";
-import Navbar from "../components/Navbar";
+import Navbar from "../components/components/Navbar";
 import { cn } from "@src/lib/utils";
 import "material-symbols";
-import Footer from "../components/Footer";
+import Footer from "../components/components/Footer";
 
 const geist = Geist({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -24,7 +24,7 @@ export default function RootLayout({
     <html lang="en" className={cn("font-sans", geist.variable)}>
       <body className={`${inter.className} flex min-h-screen flex-col`}>
         <Navbar />
-        <main className="flex-1 mb-6">{children}</main>
+        <main className="mb-6 flex-1">{children}</main>
         <Footer />
       </body>
     </html>

@@ -16,32 +16,34 @@ import {
   TopicCardItemBadgeLink,
   TopicCardTitle,
 } from "./components/TopicCard";
+import {
+  PSMainFrame,
+  PSMainFrameBadge,
+  PSMainFrameContent,
+  PSMainFrameDescription,
+  PSMainFrameTitle,
+} from "./components/PersonalNotesMainContentFrame";
 
 export default function PersonalNotesPage() {
+  // padding top -> 64 px
   return (
-    <div className="container">
-      <div className="py-16">
-        <p className="bg-light-grey text-heavy-grey w-fit rounded-xl px-3 py-1 text-[10px] font-bold uppercase tracking-[1px]">
-          cureated knowledge base
-        </p>
-        <p className="leading-18 flex flex-row gap-1 text-3xl font-bold capitalize">
-          <span className="text-[#1A1B22]">engineering</span>
-          <span className="text-[#78767B]">journal</span>
-        </p>
-        <p className="font-heavy-grey text-sm font-light leading-6">
-          A structured repository of technical mappings, mental models, and
-          implemetnation patterns across language, software engineering and
-          paradigm
-        </p>
-      </div>
+    <PSMainFrame>
+      <PSMainFrameBadge>curated knowledge base</PSMainFrameBadge>
+      <PSMainFrameTitle>engineering journal</PSMainFrameTitle>
+      <PSMainFrameDescription>
+        A structured repository of technical mappings, mental models, and
+        implemetnation patterns across language, software engineering and
+        paradigm
+      </PSMainFrameDescription>
       {/*
-        Programming Language and System Design
+      Programming Language and System Design
 
-        mobile vertical flow
-        tablet and desktop - horizontal flow 
-        
-      */}
-      <section className="flex flex-col gap-8">
+      mobile vertical flow
+      tablet and desktop - horizontal flow
+
+    */}
+
+      <PSMainFrameContent>
         <TopicCard variant={"default"}>
           <TopicCardHeader>
             <TopicCardIcon>
@@ -88,19 +90,19 @@ export default function PersonalNotesPage() {
           </TopicCardContent>
         </TopicCard>
 
-        {/* 
+        {/*
 
-        TODO:
-        The material listed in the front of application is curated by architecture 
-        design of how the front-end app access the data behind.
-        The static material (display in the app statically) is selected because 
-        the file is located in the FE project while the rest of the material is 
-        located in the object storage (outside FE, need to fetch data to BE).
-        This also could be solve the problem of defining icon for representing the
-        material, because it static, it should be easy to choose the icon and stick
-        with it.
+      TODO:
+      The material listed in the front of application is curated by architecture
+      design of how the front-end app access the data behind.
+      The static material (display in the app statically) is selected because
+      the file is located in the FE project while the rest of the material is
+      located in the object storage (outside FE, need to fetch data to BE).
+      This also could be solve the problem of defining icon for representing the
+      material, because it static, it should be easy to choose the icon and stick
+      with it.
 
-        */}
+      */}
         <div className="grid auto-cols-[276px] grid-flow-col gap-4 overflow-x-scroll ">
           <Link href={"#"}>
             <TopicCard className="border-t-4 border-black">
@@ -148,13 +150,17 @@ export default function PersonalNotesPage() {
           </Link>
         </div>
 
-        <Link href={"personal-notes/list"} className="flex flex-row items-center gap-2">
+        <Link
+          href={"personal-notes/list-of-subject"}
+          className="flex flex-row items-center gap-2"
+        >
           <p className="text-sm font-bold uppercase tracking-widest">
             view full archive
           </p>
-          <ArrowRight className="w-3.5 h-3.5" />
+          <ArrowRight className="h-3.5 w-3.5" />
         </Link>
-      </section>
-    </div>
+      </PSMainFrameContent>
+      {/* <section className="flex flex-col gap-8 py-16"></section> */}
+    </PSMainFrame>
   );
 }

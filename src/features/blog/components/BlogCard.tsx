@@ -1,4 +1,4 @@
-import CardTemplate from "@/src/components/CardTemplate";
+import CardTemplate from "@/src/components/components/CardTemplate";
 
 export default function test() {
   return (

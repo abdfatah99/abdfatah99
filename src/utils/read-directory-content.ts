@@ -110,9 +110,9 @@ export class Directory extends Node {
   }
 
   /**
-   * 
+   *
    * @param limit number of file you want to invoke
-   * @returns 
+   * @returns
    */
   getContentList(limit?: number) {
     let materials = fs

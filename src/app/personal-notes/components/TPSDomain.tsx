@@ -1,10 +1,11 @@
 //
 
 import PSNotesSubjectCard from "@/src/components/ui/card/PersonalNotesSubjectCard";
-import { PSDirectory } from "@/src/utils/PSNode";
+// import { PSDirectory } from "@/src/utils/PSNode";
+import { Directory } from "@/src/utils/read-directory-content";
 
 interface ITPSDomain {
-  domain: PSDirectory;
+  domain: Directory;
 }
 
 /**
@@ -20,13 +21,13 @@ interface ITPSDomain {
  * @returns jsx
  */
 export function PSNotePageTemplate(props: ITPSDomain) {
-  const description = props.domain.getName();
+  // const description = props.domain.getName();
   const children = props.domain.getChildrenDirectory();
-  const notes = props.domain.getNotesList();
+  const notes = props.domain.getContentList();
 
   return (
     <div className="">
-      <p className="my-4 text-gray-700">{description}</p>
+      {/* <p className="my-4 text-gray-700">{description}</p> */}
 
       <div className="mt-3 grid grid-cols-2 gap-4 ">
         {children.map((dir, index) => {
@@ -36,7 +37,7 @@ export function PSNotePageTemplate(props: ITPSDomain) {
               image="/personal-notes/sql-server.png"
               title={dir.getName()}
               desc={dir.getDescription()}
-              materialLink={dir.getURLPath()}
+              materialLink={dir.getDirNodeURLPath()}
             />
           );
         })}
@@ -48,7 +49,7 @@ export function PSNotePageTemplate(props: ITPSDomain) {
               image="/personal-notes/sql-server.png"
               title={material.getName()}
               desc={material.getDescription()}
-              materialLink={material.getURLPath()}
+              materialLink={material.getDirNodeURLPath()}
             />
           );
         })}

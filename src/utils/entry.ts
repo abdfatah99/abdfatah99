@@ -152,3 +152,11 @@ function EntryStatusNew(inputPath: string): "directory" | "file" | "not_found" {
 
   return "not_found";
 }
+
+export async function GetMDModule(modulePath: string){
+
+  // const { default: Post } = await import(`../../../../${modulePath}.md`);
+  const { default: Post } = await import(`../../${modulePath}.md`);
+
+  return Post
+}

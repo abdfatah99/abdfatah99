@@ -1,12 +1,6 @@
 import config from "@src/utils/config";
 import { Logger } from "@src/lib/logging";
-import { PSDirectory, PSMaterial } from "@src/utils/PSNode";
-import path from "path";
-import { EntryStatus, getAllSlugPathFrom } from "@src/utils/entry";
-import { PSNotePageTemplate } from "@/src/app/personal-notes/components/TPSDomain";
-import TPSMaterial from "@/src/app/personal-notes/components/TPSMaterial";
-import { notFound } from "next/navigation";
-// import style from "./page.module.css";
+import PersonalNotesSubjectPage from "@/src/features/personal-notes/[notes-subject]/personal-notes-subject-page";
 
 const log = new Logger("src/app/personal-notes/[domain]/page.tsx");
 
@@ -49,49 +43,12 @@ export const dynamicParams = false;
 //   return paths.map((slugArray) => ({ slug: slugArray }));
 // }
 
-interface IPageProps {
+interface PageProps {
   params: Promise<{ slug?: string[] }>;
 }
 
-export default async function Page({ params }: IPageProps) {
+export default async function Page({ params }: PageProps) {
   const slug: string[] = (await params).slug ?? [];
 
-  const requestPath = path.join(config.psBase, ...slug);
-
-  const entryStatus = EntryStatus(requestPath);
-
-  const importablePath = requestPath.replace(/\\/g, "/");
-  console.log("Importable Path", importablePath);
-
-  if (entryStatus == "not_found") {
-    console.log("Entry Status: ", entryStatus)
-    notFound();
-  }
-
-  if (entryStatus == "file") {
-    const { default: Post } = await import(`../../../../${importablePath}.md`);
-    console.log("Post: ", Post);
-    // const { default: Post } = await import(`@/personal-notes/${importablePath}.md`)
-
-    const material = new PSMaterial(path.join(config.psBase, ...slug));
-
-    return (
-      <div className="container">
-        <TPSMaterial>
-          <Post />
-          {/* <ReadmePersonalNotes /> */}
-        </TPSMaterial>
-      </div>
-    );
-  }
-
-  if (entryStatus == "directory") {
-    const psDirectory = new PSDirectory(path.join(config.psBase, ...slug));
-
-    return (
-      <div className={`container`}>
-        <PSNotePageTemplate domain={psDirectory} />
-      </div>
-    );
-  }
+  return <PersonalNotesSubjectPage slug={slug} />;
 }

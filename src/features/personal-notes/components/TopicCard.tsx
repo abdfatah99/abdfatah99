@@ -1,5 +1,4 @@
-import CardTemplate from "@/src/components/CardTemplate";
-import { CardHeader } from "@/src/components/ui/card";
+import CardTemplate from "@/src/components/components/CardTemplate";
 import { cn } from "@/src/lib/utils";
 import { cva, VariantProps } from "class-variance-authority";
 import { ChevronRight, Divide, Terminal } from "lucide-react";
@@ -25,7 +24,6 @@ interface ITopicCard
 }
 
 function TopicCard({ className, variant, children }: ITopicCard) {
-
   return (
     <CardTemplate className={cn(topicCardVariants({ variant }), className)}>
       {children}
@@ -74,7 +72,9 @@ function TopicCardDescription({
   children,
 }: React.HtmlHTMLAttributes<"div">) {
   return (
-    <div className={cn("card-display-description text-medium-grey", className)}>{children}</div>
+    <div className={cn("card-display-description text-medium-grey", className)}>
+      {children}
+    </div>
   );
 }
 

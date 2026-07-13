@@ -1,6 +1,7 @@
 ---
+title: Database
 date: 24-05-2025
-description: Material about PostgreSQL database
+description: All subject related to database
 ---
 
 # Header
