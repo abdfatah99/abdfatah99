@@ -1,7 +1,9 @@
-import React from "react";
+import BlogHomePage from "@/src/features/blog/blog-page";
 
 function Blog() {
-  return <div>Blogs Page</div>;
+  return (
+   <BlogHomePage></BlogHomePage>
+ );
 }
 
 export default Blog;

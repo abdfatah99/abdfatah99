@@ -166,7 +166,7 @@
     max-width: 340px;
     /* background: #ffee8c; */
     margin: auto;
-    @media (min-width: 30rem) {
+    /* @media (min-width: 30rem) {
       max-width: 30rem;
       margin: auto;
     }
@@ -189,6 +189,6 @@
     @media (min-width: 96rem) {
       max-width: 96rem;
       margin: auto;
-    }
+    } */
   }
 }

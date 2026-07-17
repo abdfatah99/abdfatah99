@@ -5,13 +5,6 @@ import {
   SubjectCardLink,
   SubjectCardTitle,
 } from "@/src/components/components/SubjectCard";
-import {
-  PSMainFrame,
-  PSMainFrameBadge,
-  PSMainFrameContent,
-  PSMainFrameDescription,
-  PSMainFrameTitle,
-} from "../../components/PersonalNotesMainContentFrame";
 
 /**
  *
@@ -20,7 +13,7 @@ import {
  *
  * @returns
  */
-export default function ListCard() {
+export default function PSSubjectList() {
   return (
     <>
       {

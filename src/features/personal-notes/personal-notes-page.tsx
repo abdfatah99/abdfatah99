@@ -17,24 +17,24 @@ import {
   TopicCardTitle,
 } from "./components/TopicCard";
 import {
-  PSMainFrame,
-  PSMainFrameBadge,
-  PSMainFrameContent,
-  PSMainFrameDescription,
-  PSMainFrameTitle,
-} from "./components/PersonalNotesMainContentFrame";
+  AppMainFrame,
+  AppMainFrameBadge,
+  AppMainFrameContent,
+  AppMainFrameDescription,
+  AppMainFrameTitle,
+} from "../../components/components/AppMainContentFrame";
 
 export default function PersonalNotesPage() {
   // padding top -> 64 px
   return (
-    <PSMainFrame>
-      <PSMainFrameBadge>curated knowledge base</PSMainFrameBadge>
-      <PSMainFrameTitle>engineering journal</PSMainFrameTitle>
-      <PSMainFrameDescription>
+    <AppMainFrame>
+      <AppMainFrameBadge>curated knowledge base</AppMainFrameBadge>
+      <AppMainFrameTitle>engineering journal</AppMainFrameTitle>
+      <AppMainFrameDescription>
         A structured repository of technical mappings, mental models, and
         implemetnation patterns across language, software engineering and
         paradigm
-      </PSMainFrameDescription>
+      </AppMainFrameDescription>
       {/*
       Programming Language and System Design
 
@@ -43,7 +43,7 @@ export default function PersonalNotesPage() {
 
     */}
 
-      <PSMainFrameContent>
+      <AppMainFrameContent>
         <TopicCard variant={"default"}>
           <TopicCardHeader>
             <TopicCardIcon>
@@ -159,8 +159,8 @@ export default function PersonalNotesPage() {
           </p>
           <ArrowRight className="h-3.5 w-3.5" />
         </Link>
-      </PSMainFrameContent>
+      </AppMainFrameContent>
       {/* <section className="flex flex-col gap-8 py-16"></section> */}
-    </PSMainFrame>
+    </AppMainFrame>
   );
 }

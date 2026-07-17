@@ -11,7 +11,7 @@ import {
   PSMainFrameContent,
   PSMainFrameDescription,
   PSMainFrameTitle,
-} from "../components/PersonalNotesMainContentFrame";
+} from "../../../components/components/AppMainContentFrame";
 
 interface RenderFileProps {
   MDModulePath: string;
@@ -79,7 +79,9 @@ export default async function PersonalNotesSubjectPage({
       <PSMainFrame>
         <PSMainFrameBadge>{psDirectory.getName()}</PSMainFrameBadge>
         <PSMainFrameTitle>{psDirectory.getName()}</PSMainFrameTitle>
-        <PSMainFrameDescription>{psDirectory.getDescription()}</PSMainFrameDescription>
+        <PSMainFrameDescription>
+          {psDirectory.getDescription()}
+        </PSMainFrameDescription>
         <PSMainFrameContent>
           {/* <RenderDirectory slug={slug} /> */}
 

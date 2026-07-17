@@ -1,8 +1,18 @@
+/**
+ * This is main content frame for entire App, while the generic structure
+ * of common app is navbar on top and footer below of the app, but the main
+ * content slightly arbitrary. In this portofolio design, the main content 
+ * structure is same for entire app.
+ * 
+ * 
+ * @packageDocumentation
+ */
+
 import { cn } from "@/src/lib/utils";
 import { cva, VariantProps } from "class-variance-authority";
 import React from "react";
 
-const psMainFrameVariants = cva(["py-16"], {
+const appMainFrameVariants = cva(["py-16"], {
   variants: {
     variant: {
       defaut: "",
@@ -16,24 +26,24 @@ const psMainFrameVariants = cva(["py-16"], {
   },
 });
 
-interface IPSMainFrame
+interface IAppMainFrame
   extends
     React.HTMLAttributes<HTMLElement>,
-    VariantProps<typeof psMainFrameVariants> {
+    VariantProps<typeof appMainFrameVariants> {
   children: React.ReactNode;
 }
 
-function PSMainFrame({ className, variant, children }: IPSMainFrame) {
+function AppMainFrame({ className, variant, children }: IAppMainFrame) {
   return (
-    <div className="container">
-      <div className={cn(psMainFrameVariants({ variant }), className)}>
+    <main className="container">
+      <div className={cn(appMainFrameVariants({ variant }), className)}>
         {children}
       </div>
-    </div>
+    </main>
   );
 }
 
-function PSMainFrameBadge({ children }: { children: React.ReactNode }) {
+function AppMainFrameBadge({ children }: { children: React.ReactNode }) {
   return (
     <div className="bg-light-grey text-heavy-grey w-fit rounded-xl px-3 py-1 text-[10px] font-bold uppercase tracking-[1px]">
       {children}
@@ -41,7 +51,7 @@ function PSMainFrameBadge({ children }: { children: React.ReactNode }) {
   );
 }
 
-function PSMainFrameTitle({ children }: { children: string }) {
+function AppMainFrameTitle({ children }: { children: string }) {
   // given argument is string, because the color is different each word, it should
   // use loop then apply the coloring techique
 
@@ -68,13 +78,13 @@ function PSMainFrameTitle({ children }: { children: string }) {
   );
 }
 
-function PSMainFrameDescription({ children }: { children?: string }) {
+function AppMainFrameDescription({ children }: { children?: string }) {
   return (
     <p className="text-heavy-grey text-sm font-normal leading-6">{children}</p>
   );
 }
 
-interface IPSMainFrameContent extends React.HtmlHTMLAttributes<HTMLElement> {
+interface IAppMainFrameContent extends React.HtmlHTMLAttributes<HTMLElement> {
   children: React.ReactNode;
 }
 
@@ -86,7 +96,7 @@ interface IPSMainFrameContent extends React.HtmlHTMLAttributes<HTMLElement> {
  * @param param0
  * @returns
  */
-function PSMainFrameContent({ className, children }: IPSMainFrameContent) {
+function AppMainFrameContent({ className, children }: IAppMainFrameContent) {
   // main focus: structuring the layout of personal notes
   // - padding top
   // - padding bottom
@@ -101,9 +111,9 @@ function PSMainFrameContent({ className, children }: IPSMainFrameContent) {
 }
 
 export {
-  PSMainFrame,
-  PSMainFrameBadge,
-  PSMainFrameTitle,
-  PSMainFrameDescription,
-  PSMainFrameContent,
+  AppMainFrame,
+  AppMainFrameBadge,
+  AppMainFrameTitle,
+  AppMainFrameDescription,
+  AppMainFrameContent,
 };

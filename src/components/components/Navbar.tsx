@@ -39,12 +39,12 @@ function Navbar() {
                     alt="Profile Foto"
                     width={100}
                     height={100}
-                    className="h-8.25 w-8.25 rounded-full bg-red-300"
+                    className="h-8.25 w-8.25 rounded-full"
                     priority
                   />
                 </DialogTrigger>
 
-                <DialogContent className="sm:max-w-106.25 rounded-full">
+                <DialogContent className="max-w-106.25 rounded-full sm:rounded-full">
                   <DialogTitle></DialogTitle>
                   <Image
                     src={"/navbar/profile-foto.png"}

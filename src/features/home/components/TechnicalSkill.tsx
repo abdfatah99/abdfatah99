@@ -28,14 +28,14 @@ export default async function TechnicalSkill({
                     <Link
                       key={i}
                       href={badge.link}
-                      className="rounded-xl bg-black px-2 text-[10px] uppercase text-white"
+                      className="rounded bg-black px-2 text-[10px] uppercase text-white"
                     >
                       {label}
                     </Link>
                   ) : (
                     <span
                       key={i}
-                      className="rounded-xl bg-[#E3E1EC] px-2 text-[10px] uppercase"
+                      className="rounded bg-[#E3E1EC] px-2 text-[10px] uppercase"
                     >
                       {label}
                     </span>

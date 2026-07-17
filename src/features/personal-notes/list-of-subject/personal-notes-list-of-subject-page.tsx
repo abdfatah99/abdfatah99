@@ -1,21 +1,23 @@
 import {
-  PSMainFrame,
-  PSMainFrameBadge,
-  PSMainFrameContent,
-  PSMainFrameDescription,
-  PSMainFrameTitle,
-} from "../components/PersonalNotesMainContentFrame";
-import ListCard from "./components/ListCard";
+  AppMainFrame,
+  AppMainFrameBadge,
+  AppMainFrameContent,
+  AppMainFrameDescription,
+  AppMainFrameTitle,
+} from "../../../components/components/AppMainContentFrame";
+import PSSubjectList from "./components/SubjectList";
 
 export default function PersonalNotesListOfSubjectPage() {
   return (
-    <PSMainFrame>
-      <PSMainFrameBadge>SWE</PSMainFrameBadge>
-      <PSMainFrameTitle>Personal Notes Subjects</PSMainFrameTitle>
-      <PSMainFrameDescription>
+    <AppMainFrame>
+      <AppMainFrameBadge>SWE</AppMainFrameBadge>
+      <AppMainFrameTitle>Personal Notes Subjects</AppMainFrameTitle>
+      <AppMainFrameDescription>
         List All Subject that I capable of.
-      </PSMainFrameDescription>
-      <PSMainFrameContent>{<ListCard></ListCard>}</PSMainFrameContent>
-    </PSMainFrame>
+      </AppMainFrameDescription>
+      <AppMainFrameContent>
+        <PSSubjectList></PSSubjectList>
+      </AppMainFrameContent>
+    </AppMainFrame>
   );
 }
