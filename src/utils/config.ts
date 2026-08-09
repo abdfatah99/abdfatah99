@@ -24,7 +24,7 @@ const config = {
       link: "about-me",
     },
   ],
-  psBase: "personal-notes/",
+  personalNotesBase: "personal-notes/",
   // psBasePath: "personal-notes", // relative to "src"
   // psHomePath: path.join(process.cwd(), "src", "personal-notes"),
   psAllowedExtensions: [".md", ".mdx"],

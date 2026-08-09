@@ -1,4 +1,4 @@
-import PersonalNotesPage from "@/src/features/personal-notes/personal-notes-page";
+import PersonalNotesPage from "@/src/features/personal-notes/personal-notes.page";
 
 function PSPage() {
   return <PersonalNotesPage />;

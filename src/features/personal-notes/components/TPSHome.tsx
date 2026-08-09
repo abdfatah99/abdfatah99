@@ -4,10 +4,10 @@
 // import ContentNavigation from "@/src/components/ui/notes-content-navigation";
 // import Navbar from "@/src/components/organism/Navbar";
 import React, { useContext } from "react";
-import PSNotesMaterialCard from "@/src/components/ui/card/PersonalNotesSubjectCard";
+import PSNotesMaterialCard from "@/src/components/ui/card/MaterialCard";
 import { Dirent } from "fs";
 import { Logger } from "@/src/lib/logging";
-import { Directory } from "@/src/utils/read-directory-content";
+import { Directory } from "@/src/utils/node";
 
 const log = new Logger(
   "src/component/templates/personal-notes/TPSHomePage.tsx",
@@ -63,7 +63,7 @@ function TPSHomePage({ domainMaterial }: ITPSHomePage) {
               <PSNotesMaterialCard
                 key={index}
                 image="/personal-notes/sql-server.png"
-                title={dir.getName()}
+                title={dir.getDirectoryName()}
                 desc={dir.getDescription()}
                 materialLink={dir.getDirNodeURLPath()}
               />

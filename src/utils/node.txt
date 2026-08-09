@@ -1,0 +1,131 @@
+import {
+  S3Client,
+  ListObjectsV2Command,
+  GetObjectCommand,
+} from "@aws-sdk/client-s3";
+import frontMatter from "front-matter";
+import type { Readable } from "stream";
+
+// Same contracts from the filesystem version — this class just fulfills
+// them against a different backend.
+interface ContentItem {
+  name: string;
+  rawName: string;
+  urlPath: string;
+  metadata: MDFileMetadata;
+}
+
+interface ContentRepository {
+  getContentList(options?: {
+    limit?: number;
+    readme?: boolean;
+  }): Promise<ContentItem[]>;
+}
+
+// S3/RustFS has no real directories — "folders" are just a naming
+// convention (a common key prefix, e.g. "blog/001-intro.md"). This client
+// treats `prefix` as the equivalent of `dirPath` in FileSystemDirectory.
+interface RustFSDirectoryConfig {
+  bucket: string;
+  prefix: string; // e.g. "personal-notes/database/postgresql/"
+  endpoint: string; // e.g. "http://localhost:9000"
+  region?: string; // RustFS doesn't use real regions, but the SDK requires one
+  credentials: {
+    accessKeyId: string;
+    secretAccessKey: string;
+  };
+}
+
+async function streamToString(stream: Readable): Promise<string> {
+  const chunks: Buffer[] = [];
+  for await (const chunk of stream) {
+    chunks.push(Buffer.isBuffer(chunk) ? chunk : Buffer.from(chunk));
+  }
+  return Buffer.concat(chunks).toString("utf-8");
+}
+
+class RustFSDirectory implements ContentRepository {
+  private client: S3Client;
+
+  constructor(private config: RustFSDirectoryConfig) {
+    this.client = new S3Client({
+      endpoint: config.endpoint,
+      region: config.region ?? "us-east-1",
+      credentials: config.credentials,
+      forcePathStyle: true, // required for most S3-compatible servers, incl. RustFS
+    });
+  }
+
+  async getContentList(
+    options: { limit?: number; readme?: boolean } = {},
+  ): Promise<ContentItem[]> {
+    const { limit, readme = false } = options;
+
+    // 1. List object keys under this "directory" prefix
+    const listResult = await this.client.send(
+      new ListObjectsV2Command({
+        Bucket: this.config.bucket,
+        Prefix: this.config.prefix,
+      }),
+    );
+
+    const keys = (listResult.Contents ?? [])
+      .map((obj) => obj.Key)
+      .filter((key): key is string => !!key)
+      .filter((key) => key.endsWith(".md"))
+      .filter((key) => {
+        const fileName = key.split("/").pop() ?? "";
+        if (readme) return true;
+        return fileName.toLowerCase() !== "readme.md";
+      });
+
+    // 2. Fetch and parse each object's content
+    const items = await Promise.all(
+      keys.map(async (key) => {
+        const objectResult = await this.client.send(
+          new GetObjectCommand({
+            Bucket: this.config.bucket,
+            Key: key,
+          }),
+        );
+
+        const rawContent = await streamToString(
+          objectResult.Body as Readable,
+        );
+        const parsed = frontMatter<MDFileMetadata>(rawContent);
+
+        const rawName = key.split("/").pop() ?? key;
+        const name = rawName.replace(/\.md$/i, "").replace(/-/g, " ");
+
+        const urlPath =
+          "/" +
+          key
+            .replace(/\.md$/i, "")
+            .split("/")
+            .map((segment) =>
+              segment.replace(/[^a-z0-9_]+/gi, "-").toLowerCase(),
+            )
+            .join("/");
+
+        return {
+          name,
+          rawName,
+          urlPath,
+          metadata: parsed.attributes,
+        };
+      }),
+    );
+
+    // 3. Sort by date, most recent first — same convention as the filesystem version
+    items.sort((a, b) => {
+      const dateA = new Date(a.metadata?.date ?? 0).getTime();
+      const dateB = new Date(b.metadata?.date ?? 0).getTime();
+      return dateB - dateA;
+    });
+
+    return limit ? items.slice(0, limit) : items;
+  }
+}
+
+export { RustFSDirectory };
+export type { RustFSDirectoryConfig };

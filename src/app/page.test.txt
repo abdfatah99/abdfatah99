@@ -1,0 +1,16 @@
+import '@testing-library/jest-dom'
+import { render, screen } from '@testing-library/react'
+import Home from '@/src/features/home'
+// import LandingPage from '@/src/app/page'
+ 
+describe('Page', () => {
+  it('renders a heading', async () => {
+    const home = await Home()
+    render(home)
+ 
+    // const heading = screen.getByRole('heading', { level: 1 })
+    const text = screen.findByText("technical skill")
+ 
+    expect(text).toBeInTheDocument()
+  })
+})

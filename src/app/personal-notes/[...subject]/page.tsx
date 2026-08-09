@@ -1,6 +1,6 @@
 import config from "@src/utils/config";
 import { Logger } from "@src/lib/logging";
-import PersonalNotesSubjectPage from "@/src/features/personal-notes/[notes-subject]/personal-notes-subject-page";
+import PersonalNotesSubjectPage from "@/src/features/personal-notes/[notes-subject]/personal-notes-subject.page";
 
 const log = new Logger("src/app/personal-notes/[domain]/page.tsx");
 
@@ -44,11 +44,15 @@ export const dynamicParams = false;
 // }
 
 interface PageProps {
-  params: Promise<{ slug?: string[] }>;
+  params: Promise<{ subject?: string[] }>;
 }
 
 export default async function Page({ params }: PageProps) {
-  const slug: string[] = (await params).slug ?? [];
+  const slug: string[] = (await params).subject ?? [];
 
-  return <PersonalNotesSubjectPage slug={slug} />;
+  /**
+   * Client will request content via url
+   * The URL structure reflect the structure of content (directory) hierarchy
+   */
+  return <PersonalNotesSubjectPage urlRequest={slug} />;
 }

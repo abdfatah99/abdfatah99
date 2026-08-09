@@ -10,6 +10,7 @@
 import path from "path";
 import fs from "fs";
 import { Logger } from "@/src/lib/logging";
+import { notFound } from "next/navigation";
 
 const log = new Logger("src/utils/entry.ts");
 
@@ -82,7 +83,6 @@ export function EntryStatus(
   const fullPath = path.resolve(inputPath);
 
   // console.log(process.cwd());
-
   // log.logFlow("Resolve path from given url", fullPath);
 
   try {
@@ -153,10 +153,17 @@ function EntryStatusNew(inputPath: string): "directory" | "file" | "not_found" {
   return "not_found";
 }
 
-export async function GetMDModule(modulePath: string){
-
-  // const { default: Post } = await import(`../../../../${modulePath}.md`);
-  const { default: Post } = await import(`../../${modulePath}.md`);
-
-  return Post
+export async function GetMDModule(modulePath: string) {
+  /**
+   * import md file as module can't be done from root, it only able as relative
+   * import. To make it uniform, the import statement should start from one single
+   * place.
+   */
+  try {
+    const { default: Post } = await import(`../../${modulePath}.md`);
+    return Post;
+  } catch (err) {
+    console.log("Get MD Module error: ", err);
+    return notFound();
+  }
 }

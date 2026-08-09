@@ -56,9 +56,21 @@ export default function PersonalNotesPage() {
             modern multi-paradigm programming language
           </TopicCardDescription>
           <TopicCardContent>
-            <TopicCardItemBadgeLink href={"#"}>Python</TopicCardItemBadgeLink>
-            <TopicCardItemBadgeLink href={"#"}>C</TopicCardItemBadgeLink>
-            <TopicCardItemBadgeLink href={"#"}>C++</TopicCardItemBadgeLink>
+            <TopicCardItemBadgeLink
+              href={"/personal-notes/programming-language/python"}
+            >
+              Python
+            </TopicCardItemBadgeLink>
+            <TopicCardItemBadgeLink
+              href={"/personal-notes/programming-language/go"}
+            >
+              Go
+            </TopicCardItemBadgeLink>
+            <TopicCardItemBadgeLink
+              href={"/personal-notes/programming-language/typescript"}
+            >
+              TypeScript
+            </TopicCardItemBadgeLink>
             <TopicCardItemBadgeLink href={"#"}>More</TopicCardItemBadgeLink>
           </TopicCardContent>
         </TopicCard>

@@ -1,0 +1,78 @@
+// ---- Config shapes — notice: no `type` field on any of them ----
+
+interface FileSystemConfig {
+  path: string;
+}
+
+interface RustFSConfig {
+  bucket: string;
+  prefix: string;
+  endpoint: string;
+  credentials: { accessKeyId: string; secretAccessKey: string };
+}
+
+interface CmsConfig {
+  collectionId: string;
+  apiUrl: string;
+}
+
+type SourceConfig = FileSystemConfig | RustFSConfig | CmsConfig;
+
+// ---- Detection: infer which backend this is FROM the fields present ----
+
+function isFileSystemConfig(config: SourceConfig): config is FileSystemConfig {
+  return "path" in config;
+}
+
+function isRustFSConfig(config: SourceConfig): config is RustFSConfig {
+  return "bucket" in config && "credentials" in config;
+}
+
+function isCmsConfig(config: SourceConfig): config is CmsConfig {
+  return "collectionId" in config;
+}
+
+// ---- Factory: picks the implementation based on shape, not a label ----
+
+function createContentRepository(config: SourceConfig): ContentRepository {
+  if (isFileSystemConfig(config)) {
+    return new FileSystemDirectory(config.path);
+  }
+
+  if (isRustFSConfig(config)) {
+    return new RustFSDirectory(config);
+  }
+
+  if (isCmsConfig(config)) {
+    return new CmsDirectory(config); // hypothetical, built later
+  }
+
+  // TypeScript can actually prove this branch is unreachable if the
+  // three `is*Config` guards fully cover SourceConfig's members —
+  // this line exists as a safety net for a config shape nobody's
+  // written a guard for yet, not a case that's expected to trigger.
+  throw new Error("Unrecognized source config shape");
+}
+
+// ---- Registry — still the single place all source configs live ----
+
+const contentRegistry: Record<string, SourceConfig> = {
+  blog: { path: config.blogBase },
+  "personal-notes": { path: config.notesBase },
+  "side-project-x": {
+    bucket: "side-content",
+    prefix: "project-x/",
+    endpoint: "http://localhost:9000",
+    credentials: {
+      accessKeyId: process.env.RUSTFS_ACCESS_KEY!,
+      secretAccessKey: process.env.RUSTFS_SECRET_KEY!,
+    },
+  },
+};
+
+// ---- Usage — hooks never mention "filesystem" or "object storage" at all ----
+
+export function GetBlogPosts(limit?: number) {
+  const repo = createContentRepository(contentRegistry.blog);
+  return repo.getContentList({ limit, readme: false });
+}

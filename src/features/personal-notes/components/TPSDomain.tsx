@@ -1,8 +1,8 @@
 //
 
-import PSNotesSubjectCard from "@/src/components/ui/card/PersonalNotesSubjectCard";
+import PSNotesSubjectCard from "@/src/components/ui/card/MaterialCard";
 // import { PSDirectory } from "@/src/utils/PSNode";
-import { Directory } from "@/src/utils/read-directory-content";
+import { Directory } from "@/src/utils/node";
 
 interface ITPSDomain {
   domain: Directory;
@@ -20,6 +20,7 @@ interface ITPSDomain {
  *
  * @returns jsx
  */
+// export function ContentGridTemplate (props: ITPSDomain) {
 export function PSNotePageTemplate(props: ITPSDomain) {
   // const description = props.domain.getName();
   const children = props.domain.getChildrenDirectory();
@@ -35,7 +36,7 @@ export function PSNotePageTemplate(props: ITPSDomain) {
             <PSNotesSubjectCard
               key={index}
               image="/personal-notes/sql-server.png"
-              title={dir.getName()}
+              title={dir.getDirectoryName()}
               desc={dir.getDescription()}
               materialLink={dir.getDirNodeURLPath()}
             />
@@ -47,7 +48,7 @@ export function PSNotePageTemplate(props: ITPSDomain) {
             <PSNotesSubjectCard
               key={index}
               image="/personal-notes/sql-server.png"
-              title={material.getName()}
+              title={material.getFileName()}
               desc={material.getDescription()}
               materialLink={material.getDirNodeURLPath()}
             />

@@ -1,3 +1,8 @@
+---
+title: Introdution to PostgreSQL
+description: brief introduction to PostgreSQL
+---
+
 # Hello world from mdx
 
 ## sub-judul
@@ -18,5 +23,4 @@ function PrintName() {
 export default ({ children }) => (
   <article className="prose bg-yellow-200">{children}</article>
 );
-
 ```

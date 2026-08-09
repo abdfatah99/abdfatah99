@@ -1,10 +1,29 @@
 /**
  * This is main content frame for entire App, while the generic structure
  * of common app is navbar on top and footer below of the app, but the main
- * content slightly arbitrary. In this portofolio design, the main content 
+ * content slightly arbitrary. In this portofolio design, the main content
  * structure is same for entire app.
- * 
- * 
+ *
+ * Example design decision that same for entire app
+ * 1. padding/
+ *
+ *
+ * Code design
+ *
+ * I don't use interface for separate function type, but it embed into the function
+ * as purpose reading the function one time (not scrolling back and forth function
+ * and interface)
+ *
+ *
+ * 1. replace `extends` with `&`: Typescript inline object types use intersection
+ *    operator (&) to combine types instead of the `extends` keyword.
+ * 2. add rest props (`...props`) argument to catch standard HTML attribute (
+ *    like `id`, `style`, or `className`)
+ * 3. Merge Class: combining style using class-variance-authority to manage
+ *    default style for the component and custom style for specific need
+ *    (passed via classname).
+ *
+ *
  * @packageDocumentation
  */
 
@@ -33,7 +52,12 @@ interface IAppMainFrame
   children: React.ReactNode;
 }
 
-function AppMainFrame({ className, variant, children }: IAppMainFrame) {
+function AppMainFrame({
+  className,
+  variant,
+  children,
+}: { children: React.ReactNode } & React.HtmlHTMLAttributes<HTMLElement> &
+  VariantProps<typeof appMainFrameVariants>) {
   return (
     <main className="container">
       <div className={cn(appMainFrameVariants({ variant }), className)}>
@@ -84,22 +108,27 @@ function AppMainFrameDescription({ children }: { children?: string }) {
   );
 }
 
-interface IAppMainFrameContent extends React.HtmlHTMLAttributes<HTMLElement> {
-  children: React.ReactNode;
-}
-
 /**
+ * Structuring the layout of content, used in personal-notes and blog.
+ *
+ * coverage:
+ * - padding top and bottom
+ * - layout flex, ordered as column
+ *
  * TODO:
- * layout change for bigger screen, it should manageable from variants
- * no, variant is used to manage theme
+ * - Content layout change for bigger screen
+ *
+ * note: variants only used to manage theme
+ *
+ *
  *
  * @param param0
  * @returns
  */
-function AppMainFrameContent({ className, children }: IAppMainFrameContent) {
-  // main focus: structuring the layout of personal notes
-  // - padding top
-  // - padding bottom
+function AppMainFrameContent({
+  className,
+  children,
+}: { children: React.ReactNode } & React.HtmlHTMLAttributes<HTMLElement>) {
   // 1. breadcrumb
   // 2. title
   // 3. message
@@ -110,10 +139,33 @@ function AppMainFrameContent({ className, children }: IAppMainFrameContent) {
   );
 }
 
+function AppMainFrameContentGrid({
+  children,
+  className,
+  ...props
+}: {
+  children?: React.ReactNode;
+  className?: string
+} & React.HtmlHTMLAttributes<HTMLElement>) {
+  return (
+    
+    // this commend code used for next development, current strike is to deploy
+    // but in the mobile format
+    // <div className={cn("mt-3 grid grid-cols-1 gap-4 sm:grid-cols-2", className)} {...props}>
+
+    <div className={cn("mt-3 grid grid-cols-1 gap-4", className)} {...props}>
+      {children}
+    </div>
+  );
+}
+
+function AppMainFrameContentFlex() {}
+
 export {
   AppMainFrame,
   AppMainFrameBadge,
   AppMainFrameTitle,
   AppMainFrameDescription,
   AppMainFrameContent,
+  AppMainFrameContentGrid,
 };

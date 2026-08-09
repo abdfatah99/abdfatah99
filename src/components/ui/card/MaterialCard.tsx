@@ -1,5 +1,11 @@
 /**
- * Used by Personal Notes Material List
+ * MaterialCard component used to represent subject and material, displayed as
+ * Card
+ *
+ * Usage:
+ * - display subject of personal notes
+ * - display material from subject of material notes
+ * - display blog
  *
  * @returns
  */
@@ -8,7 +14,7 @@ import React from "react";
 import { Button } from "@/src/components/ui/button";
 import Link from "next/link";
 
-interface IPSNotesMaterial {
+interface MaterialCardProps {
   image?: string;
   title: string;
   desc?: string;
@@ -20,23 +26,25 @@ interface IPSNotesMaterial {
 /** General Type of card
  *
  * Used by
- * - List of Projects
+ * - List of project
  * - List of main display material in personal-notes
  *
  * @param props
  * @returns
  */
-function PSNotesSubjectCard(props: IPSNotesMaterial) {
+function MaterialCard(props: MaterialCardProps) {
   return (
     // <div className="flex h-83.75 w-39 flex-col rounded-xl p-4 shadow-[rgba(0,0,0,0.24)_0px_3px_8px]">
-    <div className="flex h-83.75 w-39 flex-col rounded-xl p-4 bg-light-grey">
-      <Image
-        src={props.image ? props.image : "#"}
-        alt={props.title}
-        width={100}
-        height={100}
-        className="m-auto h-21.75 w-32 flex-none rounded-t-xl"
-      />
+    <div className="h-83.75 w-39 bg-light-grey flex flex-col rounded-xl p-4">
+      {props.image && (
+        <Image
+          src={props.image ? props.image : "#"}
+          alt={props.title}
+          width={100}
+          height={100}
+          className="h-21.75 m-auto w-32 flex-none rounded-t-xl"
+        />
+      )}
 
       <div className="mt-2 flex grow flex-col ">
         <div className="grow">
@@ -83,4 +91,4 @@ function PSNotesSubjectCard(props: IPSNotesMaterial) {
   );
 }
 
-export default PSNotesSubjectCard;
+export default MaterialCard;

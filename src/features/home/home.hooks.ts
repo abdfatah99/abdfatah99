@@ -1,5 +1,39 @@
+import { metadata } from "./../../app/layout";
 import config from "@/src/utils/config";
-import { Directory, Material } from "@/src/utils/read-directory-content";
+import { Directory, Material } from "@/src/utils/node";
+import { ISkillItem } from "./components/TechnicalSkill.types";
+import { MDFileMetadata } from "@/src/utils/node.types";
+import { title } from "process";
+
+export const programmingLanguages: ISkillItem[] = [
+  {
+    name: "Python",
+    badges: ["Proficient", { name: "notes", link: "/notes/python" }],
+  },
+  {
+    name: "TypeScript",
+    badges: [
+      "Proficient",
+      { name: "notes", link: "/notes/typescript" },
+      { name: "projects", link: "/projects?lang=ts" },
+    ],
+  },
+  {
+    name: "Go",
+    badges: ["Proficient", { name: "notes", link: "/notes/go" }],
+  },
+];
+
+export const softwareEngineering: ISkillItem[] = [
+  {
+    name: "System Design",
+    badges: ["Learning", { name: "notes", link: "/notes/system-design" }],
+  },
+  {
+    name: "Database",
+    badges: ["Proficient", { name: "projects", link: "/projects?tag=db" }],
+  },
+];
 
 /**
  *
@@ -7,19 +41,22 @@ import { Directory, Material } from "@/src/utils/read-directory-content";
  * @returns
  */
 export async function GetBlogPosts(limit?: number) {
-  // const blogDirectory = path.join(process.cwd(), "blog")
-
   const blogDirectory = new Directory(config.blogBase);
+  const blogPosts: Material[] = blogDirectory.getContentList({ limit: limit });
 
-  const posts: Material[] = blogDirectory.getContentList(limit);
-
-  // fill each metadata file
-  posts.map((post) => {
-    post.getMetadata();
-  });
-
-  // console.log("list of post")
-  // console.log(posts)
+  // change each instance to become JSON format for displaying in UI
+  const posts: MDFileMetadata[] = blogPosts.map(
+    (blogPost: Material): MDFileMetadata => {
+      const metadata = blogPost.getMetadata();
+      return {
+        title: blogPost.getTitle(),
+        description: blogPost.getDescription(),
+        date: metadata.date,
+        author: metadata.author,
+        url: blogPost.getDirNodeURLPath(),
+      };
+    },
+  );
 
   return posts;
 }

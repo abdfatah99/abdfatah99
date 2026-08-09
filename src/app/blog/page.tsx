@@ -1,9 +1,7 @@
-import BlogHomePage from "@/src/features/blog/blog-page";
+import BlogPage from "@/src/features/blog/blog-page";
 
-function Blog() {
-  return (
-   <BlogHomePage></BlogHomePage>
- );
+async function Blog() {
+  return <BlogPage></BlogPage>;
 }
 
 export default Blog;
