@@ -145,10 +145,9 @@ function AppMainFrameContentGrid({
   ...props
 }: {
   children?: React.ReactNode;
-  className?: string
+  className?: string;
 } & React.HtmlHTMLAttributes<HTMLElement>) {
   return (
-    
     // this commend code used for next development, current strike is to deploy
     // but in the mobile format
     // <div className={cn("mt-3 grid grid-cols-1 gap-4 sm:grid-cols-2", className)} {...props}>
