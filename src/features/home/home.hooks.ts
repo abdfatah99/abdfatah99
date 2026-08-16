@@ -8,30 +8,38 @@ import { title } from "process";
 export const programmingLanguages: ISkillItem[] = [
   {
     name: "Python",
-    badges: ["Proficient", { name: "notes", link: "/notes/python" }],
+    badges: [
+      "Proficient",
+      { name: "notes", link: "personal-notes/programming-language/python" },
+    ],
   },
   {
     name: "TypeScript",
     badges: [
       "Proficient",
-      { name: "notes", link: "/notes/typescript" },
-      { name: "projects", link: "/projects?lang=ts" },
+      { name: "notes", link: "personal-notes/programming-language/typescript" },
+      // { name: "projects", link: "/projects?lang=ts" },
+      { name: "projects", link: "#" },
     ],
   },
   {
     name: "Go",
-    badges: ["Proficient", { name: "notes", link: "/notes/go" }],
+    badges: [
+      "Proficient",
+      { name: "notes", link: "personal-notes/programming-language/go" },
+    ],
   },
 ];
 
 export const softwareEngineering: ISkillItem[] = [
   {
     name: "System Design",
-    badges: ["Learning", { name: "notes", link: "/notes/system-design" }],
+    badges: ["Learning", { name: "notes", link: "personal-notes/system-design" }],
   },
   {
     name: "Database",
-    badges: ["Proficient", { name: "projects", link: "/projects?tag=db" }],
+    // badges: ["Proficient", { name: "projects", link: "/projects?tag=db" }],
+    badges: ["Proficient", { name: "notes", link: "personal-notes/database" }],
   },
 ];
 

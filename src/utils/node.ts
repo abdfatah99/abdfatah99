@@ -71,6 +71,10 @@ abstract class Node {
   }
 }
 
+/**
+ * This class directory returning an instance of the class while the tree structure
+ * is need to represent using json structured data
+ */
 export class Directory extends Node {
   // children directory of directory entry
   #children: Directory[] | null = null;
