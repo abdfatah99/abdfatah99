@@ -34,7 +34,10 @@ export const programmingLanguages: ISkillItem[] = [
 export const softwareEngineering: ISkillItem[] = [
   {
     name: "System Design",
-    badges: ["Learning", { name: "notes", link: "personal-notes/system-design" }],
+    badges: [
+      "Learning",
+      { name: "notes", link: "personal-notes/system-design" },
+    ],
   },
   {
     name: "Database",

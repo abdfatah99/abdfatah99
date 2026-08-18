@@ -50,6 +50,7 @@ async function RenderFile({ MDModulePath }: RenderFileProps) {
 export default async function PersonalNotesSubjectPage({
   urlRequest,
 }: PersonalNotesSubjectPageProps) {
+  // url path redirect to root of personal-notes directory
   const requestPath = path.join(config.personalNotesBase, ...urlRequest);
   const importablePathForMDXModule = requestPath.replace(/\\/g, "/");
 

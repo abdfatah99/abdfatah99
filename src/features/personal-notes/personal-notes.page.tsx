@@ -116,7 +116,7 @@ export default function PersonalNotesPage() {
 
       */}
         <div className="grid auto-cols-[276px] grid-flow-col gap-4 overflow-x-scroll ">
-          <Link href={"#"}>
+          <Link href={"personal-notes/algorithm"}>
             <TopicCard className="border-t-4 border-black">
               <TopicCardHeader className="flex flex-col">
                 <TopicCardIcon>
@@ -146,7 +146,7 @@ export default function PersonalNotesPage() {
             </TopicCard>
           </Link>
 
-          <Link href={"#"}>
+          <Link href={"personal-notes/devops"}>
             <TopicCard className="border-t-4 border-black">
               <TopicCardHeader className="flex flex-col">
                 <TopicCardIcon>

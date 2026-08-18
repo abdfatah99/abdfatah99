@@ -7,7 +7,7 @@ import { Directory } from "./node";
 
 /**
  * Structure for UI to draw the tree
- * 
+ *
  * Inspiration: https://github.com/neigebaie/shadcn-ui-tree-view
  */
 interface TreeNode {
@@ -46,7 +46,6 @@ export function getDirectory(rootPath: string): TreeNode {
  * @returns
  */
 function buildTreeNode(directory: Directory): TreeNode {
-
   // extract children directory
   const childrenDirectories = directory.getChildrenDirectory();
 

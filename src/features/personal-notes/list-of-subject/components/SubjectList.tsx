@@ -5,6 +5,7 @@ import {
   SubjectCardLink,
   SubjectCardTitle,
 } from "@/src/components/components/SubjectCard";
+import { SubjectMetadata } from "@/src/utils/node.types";
 
 /**
  *
@@ -13,21 +14,29 @@ import {
  *
  * @returns
  */
-export default function PSSubjectList() {
+export default function PSSubjectList({
+  subjectList,
+}: {
+  subjectList: SubjectMetadata[];
+}) {
   return (
     <>
-      {
-        <SubjectCard>
-          <SubjectCardDate>06, 2026</SubjectCardDate>
-          <SubjectCardTitle>Database</SubjectCardTitle>
-          <SubjectCardDescription>
-            Intelligence Storage Management
-          </SubjectCardDescription>
-          <SubjectCardLink href={"/personal-notes/database"}>
-            read more
-          </SubjectCardLink>
-        </SubjectCard>
-      }
+      {subjectList.map((subject, index) => {
+        return (
+          <SubjectCard key={index}>
+            <SubjectCardDate>{subject.date ?? ""}</SubjectCardDate>
+            <SubjectCardTitle>{subject.title}</SubjectCardTitle>
+            <SubjectCardDescription>
+              {subject.description}
+            </SubjectCardDescription>
+            <SubjectCardLink href={subject.url}>read more</SubjectCardLink>
+          </SubjectCard>
+        );
+      })}
     </>
   );
+}
+{
+  /*
+   */
 }

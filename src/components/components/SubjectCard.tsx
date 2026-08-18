@@ -127,7 +127,7 @@ function SubjectCardDate({
 // ---------------------------- Subject Card Title ------------------------------
 // ---- children component of Subject Card
 
-const subjectCardTitleVariants = cva("pt-6 text-2xl font-bold", {
+const subjectCardTitleVariants = cva("pt-6 text-2xl font-bold capitalize", {
   variants: {
     variant: {
       default: "text-black",

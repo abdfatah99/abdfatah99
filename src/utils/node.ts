@@ -1,3 +1,9 @@
+/**
+ * 1. what is node?
+ * 2. usage of node?
+ *
+ */
+
 import frontMatter from "front-matter";
 import fs from "fs";
 import { MDFileMetadata } from "./node.types";
@@ -114,6 +120,13 @@ export class Directory extends Node {
     } else {
       return this.dirName;
     }
+  }
+
+  /**
+   * latest Directory Update
+   */
+  getDirectoryDate(): string {
+    return this.metadata.date;
   }
 
   /**
@@ -237,3 +250,19 @@ export class Material extends Node {
     }
   }
 }
+
+/**
+ * Resolve structure of directory for given URL request
+ *
+ * return JSON structure of directory (directory metadata) for cross module
+ * exchange to make it light, one-time hit at the initialization. cached on
+ * local
+ */
+function DirectoryResolver() {}
+
+/**
+ * Resolve structure of Material (markdown) for given URL request
+ *
+ * return JSON (MDFileMetaData)
+ */
+function MaterialResolver() {}
